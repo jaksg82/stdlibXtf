@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Simone Giacomoni</Authors>
+    <Company />
+    <Product>Xtf Viewer</Product>
+    <Copyright>Simone Giacomoni</Copyright>
+    <NeutralLanguage />
+  </PropertyGroup>
+
+</Project>
