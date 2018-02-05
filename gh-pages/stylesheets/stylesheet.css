@@ -126,6 +126,26 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 0 5px 0;
 }
 
+#main_content table {
+    width: 70%;
+    max-width: 900px;
+}
+
+#main_content th {
+    text-align: left;
+    padding: 5px 10px;
+}
+
+#main_content tr {
+    text-align: left;
+    padding: 5px 10px;
+}
+
+#main_content td {
+    border-top: 1px solid lightgrey;
+    padding: 5px 10px;
+}
+
 dt {
     font-style: italic;
     font-weight: bold;

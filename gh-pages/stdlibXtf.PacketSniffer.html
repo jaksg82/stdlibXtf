@@ -34,73 +34,57 @@
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>PacketSniffer (Class)</h1>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
-
-            <h2>Classes</h2>
+            <p>Extract the packet basic information from the given array of bytes.</p>
+            <p><b>Implements:</b> <a href="stdlibXtf.Common.IPacket.html">IPacket</a></p>
+            
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="stdlibXtf.ArrayToStream.html">ArrayToStream</a></td>
-                <td>Contains methods to convert byte arrays to MemoryStream objects.</td>
+                <td><b>PacketSniffer()</b></td>
+                <td>Initializes a new instance of the <b>PacketSniffer</b> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="stdlibXtf.PacketSniffer.html">PacketSniffer</a></td>
-                <td>Extract the packet basic information from the given array of bytes.</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td><b>PacketSniffer(Byte[])</b></td>
+                <td>Initializes a new instance of the <b>PacketSniffer</b> class that contain the values extracted from the given byte array.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td><b>HeaderType</b></td>
+                <td>Gets the type of the packet header.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td><b>MagicNumber</b></td>
+                <td>Gets the number that identify the correct start of the packet.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td><b>SubChannelNumber</b></td>
+                <td>Gets the index number of which channels this packet are referred.</td>
+            </tr>
+            <tr>
+                <td><b>NumberChannelsToFollow</b></td>
+                <td>Gets the number of channels that follow this packet.</td>
+            </tr>
+            <tr>
+                <td><b>NumberBytesThisRecord</b></td>
+                <td>Total byte count for this packet, including the header and the data if available.</td>
+            </tr>
+            <tr>
+                <td><b>PacketTime</b></td>
+                <td>Gets the packet recording time.</td>
+            </tr>
+            <tr>
+                <td><b>TimeTag</b></td>
+                <td>Gets the system time reference in milliseconds. Available only in specific packet types.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>
