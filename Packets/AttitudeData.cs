@@ -5,7 +5,7 @@ using stdlibXtf.Common;
 
 namespace stdlibXtf.Packets
 {
-    class AttitudeData : IPacket 
+    public class AttitudeData : IPacket
     {
         #region private properties
 
@@ -16,12 +16,13 @@ namespace stdlibXtf.Packets
         private uint _NumberBytesThisRecord;
         private DateTime _PacketTime;
 
-        #endregion
+        #endregion private properties
 
         #region public properties
 
         // IPacket implementation
         public Byte HeaderType { get { return _HeaderType; } }
+
         public ushort MagicNumber { get { return _MagicNumber; } }
         public byte SubChannelNumber { get { return _SubChannelNumber; } }
         public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
@@ -37,7 +38,7 @@ namespace stdlibXtf.Packets
         public UInt32 SourceEpoch { get; set; }
         public UInt32 SourceEpochMicroseconds { get; set; }
 
-        #endregion
+        #endregion public properties
 
         #region constructors
 
@@ -138,15 +139,11 @@ namespace stdlibXtf.Packets
                         { _PacketTime = outTime; }
                         else
                         { _PacketTime = DateTime.MinValue; }
-
                     }
-
                 }
             }
-
         }
-        
-        #endregion
-        
+
+        #endregion constructors
     }
 }

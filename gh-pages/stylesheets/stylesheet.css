@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
     color: #b5e853;
-    letter-spacing: -0.03em;
+    /* letter-spacing: -0.03em; */
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(181, 232, 83, 0.1), 0 0 10px rgba(181, 232, 83, 0.1);
 }
 
@@ -144,6 +144,19 @@ h1, h2, h3, h4, h5, h6 {
 #main_content td {
     border-top: 1px solid lightgrey;
     padding: 5px 10px;
+}
+
+#main_content td:first-child {
+    color: #0099cd;
+    font-weight: normal;
+    white-space: nowrap;
+    letter-spacing: normal;
+}
+
+#main_content a {
+    color: #b5e853;
+    text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
+    text-decoration: none;
 }
 
 dt {

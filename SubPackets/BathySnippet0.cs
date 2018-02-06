@@ -4,13 +4,13 @@ using System.IO;
 
 namespace stdlibXtf.SubPackets
 {
-    class BathySnippet0
+    public class BathySnippet0
     {
         #region private properties
 
         private UInt32 MagicId = 0x534E5030;
 
-        #endregion
+        #endregion private properties
 
         #region public properties
 
@@ -47,7 +47,7 @@ namespace stdlibXtf.SubPackets
         public Int16 HeadTemp { get; set; }
         public UInt16 BeamCount { get; set; }
 
-        #endregion
+        #endregion public properties
 
         #region constructors
 
@@ -85,7 +85,6 @@ namespace stdlibXtf.SubPackets
             Flags = 0;
             HeadTemp = 0;
             BeamCount = 0;
-
         }
 
         public BathySnippet0(Byte[] byteArray)
@@ -164,13 +163,11 @@ namespace stdlibXtf.SubPackets
                         Flags = dp.ReadUInt16(); // 68-69
                         HeadTemp = dp.ReadInt16(); // 70-71
                         BeamCount = dp.ReadUInt16(); // 72-73
-
                     }
                 }
             }
         }
 
-        #endregion
-
+        #endregion constructors
     }
 }

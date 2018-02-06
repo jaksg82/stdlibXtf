@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.PacketSniffer</title>
 </head>
 
 <body>
@@ -42,43 +42,43 @@
             <h2>Constructors</h2>
             <table>
             <tr>
-                <td><b>PacketSniffer()</b></td>
-                <td>Initializes a new instance of the <b>PacketSniffer</b> class that has default zero values.</td>
+                <td>PacketSniffer()</td>
+                <td>Initializes a new instance of the <span class="pl-e">PacketSniffer</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><b>PacketSniffer(Byte[])</b></td>
-                <td>Initializes a new instance of the <b>PacketSniffer</b> class that contain the values extracted from the given byte array.</td>
+                <td>PacketSniffer(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">PacketSniffer</span> class that contain the values extracted from the given byte array.</td>
             </tr>
             </table>
 
             <h2>Properties</h2>
             <table>
             <tr>
-                <td><b>HeaderType</b></td>
+                <td>HeaderType</td>
                 <td>Gets the type of the packet header.</td>
             </tr>
             <tr>
-                <td><b>MagicNumber</b></td>
+                <td>MagicNumber</td>
                 <td>Gets the number that identify the correct start of the packet.</td>
             </tr>
             <tr>
-                <td><b>SubChannelNumber</b></td>
+                <td>SubChannelNumber</td>
                 <td>Gets the index number of which channels this packet are referred.</td>
             </tr>
             <tr>
-                <td><b>NumberChannelsToFollow</b></td>
+                <td>NumberChannelsToFollow</td>
                 <td>Gets the number of channels that follow this packet.</td>
             </tr>
             <tr>
-                <td><b>NumberBytesThisRecord</b></td>
+                <td>NumberBytesThisRecord</td>
                 <td>Total byte count for this packet, including the header and the data if available.</td>
             </tr>
             <tr>
-                <td><b>PacketTime</b></td>
+                <td>PacketTime</td>
                 <td>Gets the packet recording time.</td>
             </tr>
             <tr>
-                <td><b>TimeTag</b></td>
+                <td>TimeTag</td>
                 <td>Gets the system time reference in milliseconds. Available only in specific packet types.</td>
             </tr>
             </table>

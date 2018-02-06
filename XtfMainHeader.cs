@@ -24,7 +24,7 @@ namespace stdlibXtf
         /// <summary>
         /// This is the number that identify the start of each packet header.
         /// </summary>
-        static public UInt16 MagicNumber { get { return 64206; } }
+        // static public UInt16 MagicNumber { get { return 64206; } }
 
         /// <summary>
         /// Xtf file format version.

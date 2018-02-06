@@ -286,3 +286,8 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+obj/Debug/netstandard2.0/stdlibXtf.pdb
+obj/Debug/netstandard2.0/stdlibXtf.dll
+obj/Debug/netstandard2.0/stdlibXtf.csproj.FileListAbsolute.txt
+bin/Debug/netstandard2.0/stdlibXtf.pdb
+bin/Debug/netstandard2.0/stdlibXtf.dll

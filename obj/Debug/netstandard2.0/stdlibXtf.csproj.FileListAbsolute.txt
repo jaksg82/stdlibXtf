@@ -7,3 +7,13 @@ C:\Users\simoneg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\ne
 C:\Users\simoneg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.AssemblyInfo.cs
 C:\Users\simoneg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.dll
 C:\Users\simoneg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.pdb
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\bin\Debug\netstandard2.0\stdlibXtf.xml
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\bin\Debug\netstandard2.0\stdlibXtf.deps.json
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\bin\Debug\netstandard2.0\stdlibXtf.dll
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\bin\Debug\netstandard2.0\stdlibXtf.pdb
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.csprojResolveAssemblyReference.cache
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.csproj.CoreCompileInputs.cache
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.AssemblyInfoInputs.cache
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.AssemblyInfo.cs
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.dll
+C:\Users\jaksg\Dropbox\VisualStudio Projects\XtfViewer2\stdlibXtf\obj\Debug\netstandard2.0\stdlibXtf.pdb

@@ -9,4 +9,8 @@
     <NeutralLanguage />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\stdlibXtf.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

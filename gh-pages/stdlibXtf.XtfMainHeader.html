@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.XtfMainHeader</title>
 </head>
 
 <body>
@@ -34,73 +34,142 @@
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>XtfMainHeader (Class)</h1>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>An object that represent the header of the XTF document.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>XtfMainHeader()</td>
+                <td>Initializes a new instance of the <span class="pl-e">XtfMainHeader</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>XtfMainHeader(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">XtfMainHeader</span> class that contain the values extracted from the given byte array.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>FileFormat</td>
+                <td>Gets XTF file format version. This value should be 123 as per Triton documentation.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>SystemType</td>
+                <td>Gets XTF system type. This value should be 1 as per Triton documentation.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>RecordingProgramName</td>
+                <td>Gets the name of the program used to create this XTF file.<br/>
+                    The maximum size of the name is of 8 characters. Longer strings will be shortened.</td>
+            </tr>
+            <tr>
+                <td>RecordingProgramVersion</td>
+                <td>Gets the version of the program used to create this XTF file.<br/>
+                    It's best to use 223, for compability reasons, or 341 for newer format improvments.<br/>
+                    The maximum size is of 8 characters. Longer strings will be shortened.</td>
+            </tr>
+            <tr>
+                <td>SonarName</td>
+                <td>Gets the name of server used to access sonar.<br/>
+                    The maximum size is of 16 characters. Longer strings will be shortened.</td>
+            </tr>
+            <tr>
+                <td>SonarType</td>
+                <td>Gets the ID of the sonar type used to acquire the data.</td>
+            </tr>
+            <tr>
+                <td>NoteString</td>
+                <td>Gets the annotations.<br/>
+                    The maximum size is of 64 characters. Longer strings will be shortened.</td>
+            </tr>
+            <tr>
+                <td>ThisFileName</td>
+                <td>Gets the name of this file, as stored in this document.<br/>
+                    The maximum size is of 64 characters. Longer strings will be shortened.</td>
+            </tr>
+            <tr>
+                <td>NavigationCoordinateUnits</td>
+                <td>Gets the units of the coordinates stored inside this document.</td>
+            </tr>
+            <tr>
+                <td>NumberOfSonarChannels</td>
+                <td>Gets the number of sonar channels stored inside this document.</td>
+            </tr>
+            <tr>
+                <td>NumberOfBathymetryChannels</td>
+                <td>Gets the number of bathymetry channels stored inside this document.</td>
+            </tr>
+            <tr>
+                <td>NumberOfSnippetChannels</td>
+                <td>Gets the number of snippet channels stored inside this document.</td>
+            </tr>
+            <tr>
+                <td>NumberOfForwardLookArrays</td>
+                <td>Gets the number of forward look sonar array channels stored inside this document.</td>
+            </tr>
+            <tr>
+                <td>NumberOfEchoStrengthChannels</td>
+                <td>Gets the number of echo strength channels stored inside this document.</td>
+            </tr>
+            <tr>
+                <td>NumberOfInterferometryChannels</td>
+                <td>Gets the number of interferometry channels stored inside this document.</td>
+            </tr>
+            <tr>
+                <td>ReferencePointHeight</td>
+                <td>Gets the height of reference point above water line in meters.</td>
+            </tr>
+            <tr>
+                <td>NavigationLatency</td>
+                <td>Gets the latency of nav system in milliceconds. Usually GPS latency.</td>
+            </tr>
+            <tr>
+                <td>NavigationOffsetX</td>
+                <td>Gets the offset of nav system. Orientation of positive X is to starboard.</td>
+            </tr>
+            <tr>
+                <td>NavigationOffsetY</td>
+                <td>Gets the offset of nav system. Orientation of positive Y is forward.</td>
+            </tr>
+            <tr>
+                <td>NavigationOffsetZ</td>
+                <td>Gets the offset of nav system. Orientation of positive Z is down.</td>
+            </tr>
+            <tr>
+                <td>NavigationOffsetYaw</td>
+                <td>Gets the offset of nav system. Orientation of positive Yaw is turn to right.</td>
+            </tr>
+            <tr>
+                <td>MRUOffsetX</td>
+                <td>Gets the offset of MRU system. Orientation of positive X is to starboard.</td>
+            </tr>
+            <tr>
+                <td>MRUOffsetY</td>
+                <td>Gets the offset of MRU system. Orientation of positive Y is forward.</td>
+            </tr>
+            <tr>
+                <td>MRUOffsetZ</td>
+                <td>Gets the offset of MRU system. Orientation of positive Z is down.</td>
+            </tr>
+            <tr>
+                <td>MRUOffsetYaw</td>
+                <td>Gets the offset of MRU system. Orientation of positive Yaw is turn to right.</td>
+            </tr>
+            <tr>
+                <td>MRUOffsetPitch</td>
+                <td>Gets the offset of MRU system. Orientation of positive Pitch is nose up.</td>
+            </tr>
+            <tr>
+                <td>MRUOffsetRoll</td>
+                <td>Gets the offset of MRU system. Orientation of positive Roll is lean to starboard.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>
