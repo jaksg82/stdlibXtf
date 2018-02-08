@@ -6,6 +6,7 @@ namespace stdlibXtf.Common
 {
     public class IndexEntry
     {
+        // TODO: make read-only
         public byte PacketType { get; set; }
         public UInt32 Index { get; set; }
 

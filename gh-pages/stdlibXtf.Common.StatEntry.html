@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.Common.StatEntry</title>
 </head>
 
 <body>
@@ -34,73 +34,61 @@
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>StatEntry (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.Common.html">stdlibXtf.Common</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Define the container for the statistics of a specific packet.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>StatEntry()</td>
+                <td>Initializes a new instance of the <span class="pl-e">StatEntry</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>StatEntry(IPacket)</td>
+                <td>Initializes a new instance of the <span class="pl-e">StatEntry</span> class with the values from the given packet.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>ID</td>
+                <td>Gets or sets the number that identify the kind of packet header.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Name</td>
+                <td>Gets the known name of the packet.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Description</td>
+                <td>Gets the known description of the packet.</td>
+            </tr>
+            <tr>
+                <td>Count</td>
+                <td>Gets the number of the packets added to this instance of <span class="pl-e">StatEntry</span>.</td>
+            </tr>
+            <tr>
+                <td>FirstPacket</td>
+                <td>Gets the packet used to inizialise this instance of <span class="pl-e">StatEntry</span>.</td>
+            </tr>
+            <tr>
+                <td>LastPacket</td>
+                <td>Gets the last packet added to this instance of <span class="pl-e">StatEntry</span>.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
+            <h2>Methods</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Add(IPacket)</td>
+                <td>The given packet will be added to this instance of the <span class="pl-e">StatEntry</span> class only if is of the same kind of the initialization one.</td>
             </tr>
             </table>
 
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

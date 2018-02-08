@@ -32,12 +32,12 @@
 
         #region "Enums stored as 16 bit unsigned integers"
 
-        public static ushort ToByte(this CoordinateUnits value)
+        public static ushort ToUInt16(this CoordinateUnits value)
         {
             return (ushort)value;
         }
 
-        public static ushort ToByte(this CorrectionFlags value)
+        public static ushort ToUInt16(this CorrectionFlags value)
         {
             return (ushort)value;
         }

@@ -15,6 +15,7 @@ namespace stdlibXtf.Common
 
         #region Public properties
 
+        // TODO: convert to read-only and move the code inside the constructor
         public byte ID {
             get { return _ID; }
             set {
@@ -27,6 +28,7 @@ namespace stdlibXtf.Common
         public String Name { get { return _Name; } }
         public String Description { get { return _Description; } }
         public UInt16 Count { get { return _Count; } }
+        // TODO: make properties read-only
         public IPacket FirstPacket { get; set; }
         public IPacket LastPacket { get; set; }
 
@@ -54,6 +56,7 @@ namespace stdlibXtf.Common
 
         public bool Add(IPacket packet)
         {
+            // TODO: if ID == 255 then initialize with the added packet
             if (packet.HeaderType == ID)
             {
                 _Count = (UInt16)(_Count + 1);

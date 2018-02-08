@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.Packets.Gyro</title>
 </head>
 
 <body>
@@ -34,73 +34,74 @@
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>Gyro (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.Packets.html">stdlibXtf.Packets</a></p>
+            <p><b>Implements:</b> <a href="stdlibXtf.Common.IPacket.html">IPacket</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Define the base data packet.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Gyro()</td>
+                <td>Initializes a new instance of the <span class="pl-e">Gyro</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Gyro(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">Gyro</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 64 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>MagicNumber</td>
+                <td>Gets the number that identify the correct start of the packet.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>HeaderType</td>
+                <td>Gets the type of the packet header.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>SubChannelNumber</td>
+                <td>Gets the index number of which channels this packet are referred.</td>
+            </tr>
+            <tr>
+                <td>NumberChannelsToFollow</td>
+                <td>Gets the number of channels that follow this packet.</td>
+            </tr>
+            <tr>
+                <td>NumberBytesThisRecord</td>
+                <td>Total byte count for this packet, including the header and the data if available.</td>
+            </tr>
+            <tr>
+                <td>PacketTime</td>
+                <td>Gets the packet recording time.</td>
+            </tr>
+            <tr>
+                <td>TimeTag</td>
+                <td>System time reference in milliseconds.</td>
+            </tr>
+            <tr>
+                <td>SourceEpoch</td>
+                <td>Source Epoch Seconds since 1/1/1970, will be followed attitude data even to 64 bytes.</td>
+            </tr>
+            <tr>
+                <td>GyroValue</td>
+                <td>Raw heading (0 – 360).</td>
+            </tr>
+            <tr>
+                <td>TimestampValidity</td>
+                <td>Time stamp validity:<br/>
+                    0 = only receive time valid<br/>
+                    1 = only source time valid<br/>
+                    3 = both valid</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

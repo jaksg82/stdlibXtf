@@ -4,6 +4,7 @@ namespace stdlibXtf.Common
 {
     public class TypeEntry
     {
+        // TODO: make read-only
         public byte ID { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }

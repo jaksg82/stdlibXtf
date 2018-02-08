@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.Packets.PingHeader</title>
 </head>
 
 <body>
@@ -34,73 +34,282 @@
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>PingHeader (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.Packets.html">stdlibXtf.Packets</a></p>
+            <p><b>Implements:</b> <a href="stdlibXtf.Common.IPacket.html">IPacket</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Define the base data packet.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PingHeader()</td>
+                <td>Initializes a new instance of the <span class="pl-e">PingHeader</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PingHeader(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">PingHeader</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 256 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>MagicNumber</td>
+                <td>Gets the number that identify the correct start of the packet.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>HeaderType</td>
+                <td>Gets the type of the packet header.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>SubChannelNumber</td>
+                <td>Gets the index number of which channels this packet are referred.</td>
+            </tr>
+            <tr>
+                <td>NumberChannelsToFollow</td>
+                <td>Gets the number of channels that follow this packet.</td>
+            </tr>
+            <tr>
+                <td>NumberBytesThisRecord</td>
+                <td>Total byte count for this packet, including the header and the data if available.</td>
+            </tr>
+            <tr>
+                <td>PacketTime</td>
+                <td>Gets the packet recording time.</td>
+            </tr>
+            <tr>
+                <td>EventNumber</td>
+                <td>Gets the last logged event number.</td>
+            </tr>
+            <tr>
+                <td>PingNumber</td>
+                <td>Counts consecutively (usually from 0) and increments for each update.<br/>
+                    Isis Note: The counters are different between sonar and bathymetry updates.</td>
+            </tr>
+            <tr>
+                <td>SoundVelocity</td>
+                <td>Get the speed of sound value in m/s, Isis uses 750 (one way), some XTF files use 1500.</td>
+            </tr>
+            <tr>
+                <td>OceanTide</td>
+                <td>Gets the altitude above Geoide (from RTK), if present, or the ocean tide in meters.</td>
+            </tr>
+            <tr>
+                <td>ConductivityFrequency</td>
+                <td>Gets the conductivity frequency in Hz.</td>
+            </tr>
+            <tr>
+                <td>TemperatureFrequency</td>
+                <td>Gets the temperature frequency in Hz.</td>
+            </tr>
+            <tr>
+                <td>PressureFrequency</td>
+                <td>Gets the pressure frequency in Hz.</td>
+            </tr>
+            <tr>
+                <td>PressureTemp</td>
+                <td>Gets the pressure temperature in degrees Celsius.</td>
+            </tr>
+            <tr>
+                <td>Conductivity</td>
+                <td>Gets the conductivity in Siemens/m.</td>
+            </tr>
+            <tr>
+                <td>WaterTemperature</td>
+                <td>Gets the water temperature in degrees Celsius.</td>
+            </tr>
+            <tr>
+                <td>Pressure</td>
+                <td>Gets the water pressure in psia.</td>
+            </tr>
+            <tr>
+                <td>ComputedSoundVelocity</td>
+                <td>Gets the speed of sound value in m/s computed from Conductivity, WaterTemperature, and Pressure
+                    using the Chen Millero formula (1977), formula (JASA, 62, 1129-1135).</td>
+            </tr>
+            <tr>
+                <td>MagX</td>
+                <td>Gets the X-axis magnetometer data in mgauss.</td>
+            </tr>
+            <tr>
+                <td>MagY</td>
+                <td>Gets the Y-axis magnetometer data in mgauss.</td>
+            </tr>
+            <tr>
+                <td>MagZ</td>
+                <td>Gets the Z-axis magnetometer data in mgauss.</td>
+            </tr>
+            <tr>
+                <td>AuxValue1</td>
+                <td>Gets the auxiliary values. This can be used to store and display any value at the user's discretion.</td>
+            </tr>
+            <tr>
+                <td>AuxValue2</td>
+                <td>Gets the auxiliary values. This can be used to store and display any value at the user's discretion.</td>
+            </tr>
+            <tr>
+                <td>AuxValue3</td>
+                <td>Gets the auxiliary values. This can be used to store and display any value at the user's discretion.</td>
+            </tr>
+            <tr>
+                <td>AuxValue4</td>
+                <td>Gets the auxiliary values. This can be used to store and display any value at the user's discretion.</td>
+            </tr>
+            <tr>
+                <td>AuxValue5</td>
+                <td>Gets the auxiliary values. This can be used to store and display any value at the user's discretion.</td>
+            </tr>
+            <tr>
+                <td>AuxValue6</td>
+                <td>Gets the auxiliary values. This can be used to store and display any value at the user's discretion.</td>
+            </tr>
+            <tr>
+                <td>SpeedLog</td>
+                <td>Gets the speed log sensor value on towfish in knots.</td>
+            </tr>
+            <tr>
+                <td>Turbidity</td>
+                <td>Gets the turbidity sensor value. 0 to +5 volts, multiplied by 10000.</td>
+            </tr>
+            <tr>
+                <td>ShipSpeed</td>
+                <td>Gets the ship speed in knots.</td>
+            </tr>
+            <tr>
+                <td>ShipGyro</td>
+                <td>Gets the ship gyro in degrees.</td>
+            </tr>
+            <tr>
+                <td>ShipCoordinateX</td>
+                <td>Gets the ship longitude (in degrees) or easting (in meters).</td>
+            </tr>
+            <tr>
+                <td>ShipCoordinateY</td>
+                <td>Gets the ship latitude (in degrees) or northing (in meters).</td>
+            </tr>
+            <tr>
+                <td>ShipAltitude</td>
+                <td>Gets the ship altitude in decimeters.</td>
+            </tr>
+            <tr>
+                <td>ShipDepth</td>
+                <td>Gets the ship depth in decimeters.</td>
+            </tr>
+            <tr>
+                <td>FixTime</td>
+                <td>Gets the time of most recent nav update.</td>
+            </tr>
+            <tr>
+                <td>SensorSpeed</td>
+                <td>Gets the speed of towfish in knots.</td>
+            </tr>
+            <tr>
+                <td>KP</td>
+                <td>Gets the Kilometers Pipe.</td>
+            </tr>
+            <tr>
+                <td>SensorCoordinateX</td>
+                <td>Gets the sensor longitude (in degrees) or easting (in meters).</td>
+            </tr>
+            <tr>
+                <td>SensorCoordinateY</td>
+                <td>Gets the sensor latitude (in degrees) or northing (in meters).</td>
+            </tr>
+            <tr>
+                <td>SonarStatus</td>
+                <td>Gets the system status value, sonar dependant.</td>
+            </tr>
+            <tr>
+                <td>RangeToFish</td>
+                <td>Gets the slant range to towfish from ship in decimeters.</td>
+            </tr>
+            <tr>
+                <td>BearingToFish</td>
+                <td>Gets the bearing to towfish from ship, stored in degrees multiplied by 100.</td>
+            </tr>
+            <tr>
+                <td>CableOut</td>
+                <td>Gets the amount of cable payed out in meters.</td>
+            </tr>
+            <tr>
+                <td>Layback</td>
+                <td>Gets the distance over ground from ship to fish.</td>
+            </tr>
+            <tr>
+                <td>CableTension</td>
+                <td>Gets the cable tension from serial port.</td>
+            </tr>
+            <tr>
+                <td>SensorDepth</td>
+                <td>Gets the distance (m) from sea surface to sensor. The deeper the sensor goes, the bigger (positive) this value becomes.</td>
+            </tr>
+            <tr>
+                <td>SensorPrimaryAltitude</td>
+                <td>Gets the distance from towfish to the sea floor.</td>
+            </tr>
+            <tr>
+                <td>SensorAuxAltitude</td>
+                <td>Gets the auxiliary altitude.</td>
+            </tr>
+            <tr>
+                <td>SensorPitch</td>
+                <td>Gets the pitch in degrees (positive=nose up).</td>
+            </tr>
+            <tr>
+                <td>SensorRoll</td>
+                <td>Gets the roll in degrees (positive=roll to starboard).</td>
+            </tr>
+            <tr>
+                <td>SensorHeading</td>
+                <td>Gets the heading in degrees.</td>
+            </tr>
+            <tr>
+                <td>Heave</td>
+                <td>Gets the sensors heave at start of ping. Positive value means sensor moved up..</td>
+            </tr>
+            <tr>
+                <td>Yaw</td>
+                <td>Gets the sensor yaw. Positive means turn to right.</td>
+            </tr>
+            <tr>
+                <td>AttitudeTimeTag</td>
+                <td>Gets the time tag in milliseconds. Used to coordinate with millisecond time value in Attitude packets.
+                    Mandatory when logging XTFATTITUDE packets.</td>
+            </tr>
+            <tr>
+                <td>DistanceOffTrack</td>
+                <td>Gets the distance off track.</td>
+            </tr>
+            <tr>
+                <td>NavigationFixMilliseconds</td>
+                <td>Gets the millisecond clock value when nav received.</td>
+            </tr>
+            <tr>
+                <td>ComputerClockTime</td>
+                <td>Gets the computer clock time when this ping was received. May be different from ping time at start
+                    of this record if the sonar timestamped the data and the two systems aren't synched.
+                    This time should be ignored in most cases.</td>
+            </tr>
+            <tr>
+                <td>FishPositionDeltaX</td>
+                <td>Gets the additional Tow Cable and Fish information from Trackpoint.
+                    Stored as meters multiplied by 3.0, supporting +/- 10000.0m (usually from trackpoint).</td>
+            </tr>
+            <tr>
+                <td>FishPositionDeltaY</td>
+                <td>Gets the additional Tow Cable and Fish information from Trackpoint.
+                    Stored as meters multiplied by 3.0, supporting +/- 10000.0m (usually from trackpoint).</td>
+            </tr>
+            <tr>
+                <td>FishPositionErrorCode</td>
+                <td>Gets the error code for FishPosition delta x,y. Typically reported by Trackpoint.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>
