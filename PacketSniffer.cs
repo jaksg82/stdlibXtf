@@ -6,6 +6,9 @@ using stdlibXtf.Common;
 
 namespace stdlibXtf
 {
+    /// <summary>
+    /// Extract the packet basic information from the given array of bytes.
+    /// </summary>
     public class PacketSniffer : IPacket
     {
         #region private properties
@@ -16,26 +19,56 @@ namespace stdlibXtf
         private ushort _NumberChannelsToFollow;
         private uint _NumberBytesThisRecord;
         private DateTime _PacketTime;
+        private UInt32 _TimeTag;
 
-        #endregion
+        #endregion private properties
 
         #region public properties
 
         // IPacket implementation
+        /// <summary>
+        /// Gets the type of the packet header.
+        /// </summary>
         public Byte HeaderType { get { return _HeaderType; } }
+
+        /// <summary>
+        /// Gets the number that identify the correct start of the packet.
+        /// </summary>
         public ushort MagicNumber { get { return _MagicNumber; } }
+
+        /// <summary>
+        /// Gets the index number of which channels this packet are referred.
+        /// </summary>
         public byte SubChannelNumber { get { return _SubChannelNumber; } }
+
+        /// <summary>
+        /// Gets the number of channels that follow this packet.
+        /// </summary>
         public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
+
+        /// <summary>
+        /// Total byte count for this packet, including the header and the data if available.
+        /// </summary>
         public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
+
+        /// <summary>
+        /// Gets the packet recording time.
+        /// </summary>
         public DateTime PacketTime { get { return _PacketTime; } }
 
         // Other Properties
-        public UInt32 TimeTag { get; set; }
+        /// <summary>
+        /// Gets the system time reference in milliseconds. Available only in specific packet types.
+        /// </summary>
+        public UInt32 TimeTag { get { return _TimeTag; } }
 
-        #endregion
+        #endregion public properties
 
         #region constructors
 
+        /// <summary>
+        /// Initializes a new instance of the PacketSniffer class that has default zero values.
+        /// </summary>
         public PacketSniffer()
         {
             _MagicNumber = 0;
@@ -44,11 +77,11 @@ namespace stdlibXtf
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 0;
             _PacketTime = DateTime.MinValue;
-            TimeTag = 0;
+            _TimeTag = 0;
         }
 
         /// <summary>
-        /// Extract the packet basic information from the given array of bytes.
+        /// Initializes a new instance of the PacketSniffer class that contain the values extracted from the given byte array.
         /// </summary>
         /// <param name="byteArray">14 bytes array for basic information OR 256 byte for packet time.</param>
         public PacketSniffer(Byte[] byteArray)
@@ -59,11 +92,11 @@ namespace stdlibXtf
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 0;
             _PacketTime = DateTime.MinValue;
-            TimeTag = 0;
+            _TimeTag = 0;
 
             using (BinaryReader pd = new BinaryReader(ArrayToStream.BytesToMemory(byteArray)))
             {
-                if (byteArray.Length >= 14 )
+                if (byteArray.Length >= 14)
                 {
                     // Read the basic information of the packet
                     XtfBasePacket basePkt = new XtfBasePacket(byteArray);
@@ -119,7 +152,7 @@ namespace stdlibXtf
                             case 103:
                                 AttitudeData tmpHdr2 = new AttitudeData(byteArray);
                                 _PacketTime = tmpHdr2.PacketTime;
-                                TimeTag = tmpHdr2.TimeTag;
+                                _TimeTag = tmpHdr2.TimeTag;
                                 break;
 
                             // Raw Serial packet types
@@ -140,7 +173,7 @@ namespace stdlibXtf
                             case 84:
                                 Gyro tmpHdr5 = new Gyro(byteArray);
                                 _PacketTime = tmpHdr5.PacketTime;
-                                TimeTag = tmpHdr5.TimeTag;
+                                _TimeTag = tmpHdr5.TimeTag;
                                 break;
 
                             // QPS Singlebeam packet types
@@ -154,7 +187,7 @@ namespace stdlibXtf
                             case 100:
                                 Navigation tmpHdr7 = new Navigation(byteArray);
                                 _PacketTime = tmpHdr7.PacketTime;
-                                TimeTag = tmpHdr7.TimeTag;
+                                _TimeTag = tmpHdr7.TimeTag;
                                 break;
 
                             // Pos Raw Navigation packet types
@@ -167,7 +200,7 @@ namespace stdlibXtf
                             case 199:
                                 RawCustomHeader tmpHdr9 = new RawCustomHeader(byteArray);
                                 _PacketTime = tmpHdr9.PacketTime;
-                                TimeTag = tmpHdr9.TimeTag;
+                                _TimeTag = tmpHdr9.TimeTag;
                                 break;
 
                             default:
@@ -178,7 +211,6 @@ namespace stdlibXtf
             }
         }
 
-        #endregion
-
+        #endregion constructors
     }
 }

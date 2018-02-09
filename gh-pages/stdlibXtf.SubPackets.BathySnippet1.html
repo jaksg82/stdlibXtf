@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.SubPackets.BathySnippet1</title>
 </head>
 
 <body>
@@ -28,79 +28,72 @@
 
     <div class="container">
         <section id="nav_content">
-            <script src="javascripts/navlist.js" language="jscript"></script>
+            <script src="javascripts/navlist-SubPackets.js" language="jscript"></script>
         </section>
     </div>
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>BathySnippet1 (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.SubPackets.html">stdlibXtf.SubPackets</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Represent the beam part of the bathy data attached to a <a href="stdlibXtf.Packets.PingHeader.html"><span class="pl-e">PingHeader</span></a> packet.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>BathySnippet1()</td>
+                <td>Initializes a new instance of the <span class="pl-e">BathySnippet1</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>BathySnippet1(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">BathySnippet1</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 24 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>HeaderSize</td>
+                <td>Gets the size, in bytes, of this header packet.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>DataSize</td>
+                <td>Gets the size, in bytes, of the following data packets.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PingNumber</td>
+                <td>Gets the sequential number of the ping.</td>
+            </tr>
+            <tr>
+                <td>Beam</td>
+                <td>Gets the beam number, from 0 to total number minus 1.</td>
+            </tr>
+            <tr>
+                <td>SnipSamples</td>
+                <td>Gets the snippet size, samples.</td>
+            </tr>
+            <tr>
+                <td>GainStart</td>
+                <td>Gets the gain at start of snippet, 0.01 dB steps.</td>
+            </tr>
+            <tr>
+                <td>GainEnd</td>
+                <td>Gets the gain at end of snippet, 0.01 dB steps.</td>
+            </tr>
+            <tr>
+                <td>FragOffset</td>
+                <td>Gets the fragment offset, samples from ping.</td>
+            </tr>
+            <tr>
+                <td>FragSamples</td>
+                <td>Gets the fragment size, samples.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

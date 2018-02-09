@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.SubPackets.BathySnippet0</title>
 </head>
 
 <body>
@@ -28,79 +28,164 @@
 
     <div class="container">
         <section id="nav_content">
-            <script src="javascripts/navlist.js" language="jscript"></script>
+            <script src="javascripts/navlist-SubPackets.js" language="jscript"></script>
         </section>
     </div>
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>BathySnippet0 (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.SubPackets.html">stdlibXtf.SubPackets</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Represent the header part of the bathy data attached to a <a href="stdlibXtf.Packets.PingHeader.html"><span class="pl-e">PingHeader</span></a> packet.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>BathySnippet0()</td>
+                <td>Initializes a new instance of the <span class="pl-e">BathySnippet0</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>BathySnippet0(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">BathySnippet0</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 74 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>HeaderSize</td>
+                <td>Gets the size, in bytes, of this header packet.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>DataSize</td>
+                <td>Gets the size, in bytes, of the following data packets.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PingNumber</td>
+                <td>Gets the sequential number of the ping.</td>
+            </tr>
+            <tr>
+                <td>Seconds</td>
+                <td>Gets the time, in seconds, since 00:00:00 of 1st January 1970.</td>
+            </tr>
+            <tr>
+                <td>Milliseconds</td>
+                <td>Gets the milliseconds part of the time.</td>
+            </tr>
+            <tr>
+                <td>Latency</td>
+                <td>Gets the time from ping to output in milliseconds.</td>
+            </tr>
+            <tr>
+                <td>SonarId1</td>
+                <td>Gets the least significant four bytes of ethernet address.</td>
+            </tr>
+            <tr>
+                <td>SonarId2</td>
+                <td>Gets the least significant four bytes of ethernet address.</td>
+            </tr>
+            <tr>
+                <td>SonarModel</td>
+                <td>Gets the coded model number of sonar.</td>
+            </tr>
+            <tr>
+                <td>Frequency</td>
+                <td>Gets the sonar frequency in kHz.</td>
+            </tr>
+            <tr>
+                <td>SoundSpeed</td>
+                <td>Gets the programmed sound velocity in m/s</td>
+            </tr>
+            <tr>
+                <td>SampleRate</td>
+                <td>Gets the samples per seconds.</td>
+            </tr>
+            <tr>
+                <td>PingRate</td>
+                <td>Gets the pings per second, 0.001 Hz steps.</td>
+            </tr>
+            <tr>
+                <td>Range</td>
+                <td>Gets the range setting in meters.</td>
+            </tr>
+            <tr>
+                <td>Power</td>
+                <td>Gets the power setting.</td>
+            </tr>
+            <tr>
+                <td>Gain</td>
+                <td>Gets the gain settings (b15 = auto, b14 = TVG, b6..0 = gain).</td>
+            </tr>
+            <tr>
+                <td>PulseWidth</td>
+                <td>Gets the transmit pulse width in microseconds.</td>
+            </tr>
+            <tr>
+                <td>Spread</td>
+                <td>Gets the TVG spreading, n*log(R), 0.25dB steps.</td>
+            </tr>
+            <tr>
+                <td>Absorb</td>
+                <td>Gets the TVG absorption, dB/km, 1dB steps.</td>
+            </tr>
+            <tr>
+                <td>ProjectorType</td>
+                <td>Gets the type of projector (b7 = steering, b4..0 = projector type).</td>
+            </tr>
+            <tr>
+                <td>ProjectorWidth</td>
+                <td>Gets the transmit beam width along track, 0.1 degrees steps.</td>
+            </tr>
+            <tr>
+                <td>SpacingNumerator</td>
+                <td>Gets the receiver beam spacing, numerator part in degrees.</td>
+            </tr>
+            <tr>
+                <td>SpacingDenominator</td>
+                <td>Gets the receiver beam spacing, denominator part in degrees.</td>
+            </tr>
+            <tr>
+                <td>ProjectorAngle</td>
+                <td>Gets the projector steering, degrees * Pkt_Steer_Res.</td>
+            </tr>
+            <tr>
+                <td>MinRange</td>
+                <td>Gets the range filter settings.</td>
+            </tr>
+            <tr>
+                <td>MaxRange</td>
+                <td>Gets the range filter settings.</td>
+            </tr>
+            <tr>
+                <td>MinDepth</td>
+                <td>Gets the depth filter settings.</td>
+            </tr>
+            <tr>
+                <td>MaxDepth</td>
+                <td>Gets the depth filter settings.</td>
+            </tr>
+            <tr>
+                <td>Filters</td>
+                <td>Gets the enabled filters (b1=depth, b0=range).</td>
+            </tr>
+            <tr>
+                <td>Flags</td>
+                <td>Gets the settings flags (b0..11=spare, b12..14=snip mode, b15=roll stab, b0=roll stab enabled).</td>
+            </tr>
+            <tr>
+                <td>HeadTemp</td>
+                <td>Gets the head temperature, 0.1 celsius steps.</td>
+            </tr>
+            <tr>
+                <td>BeamCount</td>
+                <td>Gets the number of beams.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

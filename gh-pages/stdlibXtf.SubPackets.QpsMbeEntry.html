@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.SubPackets.QpsMbeEntry</title>
 </head>
 
 <body>
@@ -28,79 +28,64 @@
 
     <div class="container">
         <section id="nav_content">
-            <script src="javascripts/navlist.js" language="jscript"></script>
+            <script src="javascripts/navlist-SubPackets.js" language="jscript"></script>
         </section>
     </div>
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>QpsMbeEntry (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.SubPackets.html">stdlibXtf.SubPackets</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Define the base data packet.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>QpsMbeEntry()</td>
+                <td>Initializes a new instance of the <span class="pl-e">QpsMbeEntry</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>QpsMbeEntry(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">QpsMbeEntry</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 64 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Id</td>
+                <td>Gets the beam ID.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Intensity</td>
+                <td>Gets the signal strength.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Quality</td>
+                <td>Gets the quality.</td>
+            </tr>
+            <tr>
+                <td>TwoWayTravelTime</td>
+                <td>Gets the two way travel time, in seconds.</td>
+            </tr>
+            <tr>
+                <td>DeltaTime</td>
+                <td>Gets the beam time offset. <span class="pl-e">DeltaTime</span> can be used for profilers to calculate the ping time per beam.</td>
+            </tr>
+            <tr>
+                <td>BeamAngle</td>
+                <td>Gets the beam angle. <span class="pl-e">BeamAngle</span> convention: negative to port side, nadir beam 0 degrees, positive to starboard side.</td>
+            </tr>
+            <tr>
+                <td>TiltAngle</td>
+                <td>Gets the tilt angle. <span class="pl-e">TiltAngle</span> convention: positive forward, negative backward (used for pitch steering).</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

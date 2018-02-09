@@ -1,0 +1,21 @@
+//console.log('This would be the main JS file.');
+
+var el = document.getElementById("nav_content");
+var navlist = '';
+navlist = navlist + '<h1><a href="stdlibXtf.html"><img src="images/icon_namespace.png" alt="n" />stdlibXtf</a></h1>';
+navlist = navlist + '<h2><a href="stdlibXtf.Common.html"><img src="images/icon_namespace.png" alt="n" />stdlibXtf.Common</a></h2>';
+navlist = navlist + '<h2><a href="stdlibXtf.Enums.html"><img src="images/icon_namespace.png" alt="n" />stdlibXtf.Enums</a></h2>';
+navlist = navlist + '<h2><a href="stdlibXtf.Packets.html"><img src="images/icon_namespace.png" alt="n" />stdlibXtf.Packets</a></h2>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.AttitudeData.html"><img src="images/icon_class.png" alt="c" />AttitudeData</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.Gyro.html"><img src="images/icon_class.png" alt="c" />Gyro</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.HighSpeedSensor.html"><img src="images/icon_class.png" alt="c" />HighSpeedSensor</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.Navigation.html"><img src="images/icon_class.png" alt="c" />Navigation</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.Notes.html"><img src="images/icon_class.png" alt="c" />Notes</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.PingHeader.html"><img src="images/icon_class.png" alt="c" />PingHeader</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.PosRawNavigation.html"><img src="images/icon_class.png" alt="c" />PosRawNavigation</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.QpsSingleBeam.html"><img src="images/icon_class.png" alt="c" />QpsSingleBeam</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.RawCustomHeader.html"><img src="images/icon_class.png" alt="c" />RawCustomHeader</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.RawSerialHeader.html"><img src="images/icon_class.png" alt="c" />RawSerialHeader</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.Packets.XtfBasePacket.html"><img src="images/icon_class.png" alt="c" />XtfBasePacket</a></h3>';
+navlist = navlist + '<h2><a href="stdlibXtf.SubPackets.html"><img src="images/icon_namespace.png" alt="n" />stdlibXtf.SubPackets</a></h2>';
+el.innerHTML = navlist;

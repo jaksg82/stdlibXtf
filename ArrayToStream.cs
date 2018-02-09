@@ -2,6 +2,9 @@
 
 namespace stdlibXtf
 {
+    /// <summary>
+    /// Static class that contain methods to convert an array of bytes in to a System.IO.MemoryStream.
+    /// </summary>
     public static class ArrayToStream
     {
         /// <summary>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.SubPackets.BeamXYZA</title>
 </head>
 
 <body>
@@ -28,79 +28,60 @@
 
     <div class="container">
         <section id="nav_content">
-            <script src="javascripts/navlist.js" language="jscript"></script>
+            <script src="javascripts/navlist-SubPackets.js" language="jscript"></script>
         </section>
     </div>
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>BeamXYZA (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.SubPackets.html">stdlibXtf.SubPackets</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Represent the processed beam of the bathy data attached to a <a href="stdlibXtf.Packets.PingHeader.html"><span class="pl-e">PingHeader</span></a> packet.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>BeamXYZA()</td>
+                <td>Initializes a new instance of the <span class="pl-e">BeamXYZA</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>BeamXYZA(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">BeamXYZA</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 31 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PositionOffsetX</td>
+                <td>Gets the offset from fish.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PositionOffsetY</td>
+                <td>Gets the offset from fish.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>Depth</td>
+                <td>Gets the absolute depth.</td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td>Gets the two way travel time.</td>
+            </tr>
+            <tr>
+                <td>Amplitude</td>
+                <td>Gets the amplitude.</td>
+            </tr>
+            <tr>
+                <td>Quality</td>
+                <td>Gets the quality.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

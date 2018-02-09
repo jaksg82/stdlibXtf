@@ -6,6 +6,9 @@ using System.IO;
 
 namespace stdlibXtf
 {
+    /// <summary>
+    /// An object that represent the header of the XTF document.
+    /// </summary>
     public class XtfMainHeader
     {
         #region private properties
@@ -15,28 +18,25 @@ namespace stdlibXtf
         private String _SonarName;
         private String _NoteString;
         private String _ThisFileName;
-        //private List<ChannelInfo> _Channels;
+        private Byte _FileFormat;
+        private Byte _SystemType;
+        private UInt16 _SonarType;
 
-        #endregion
+        #endregion private properties
 
         #region public properties
-
-        /// <summary>
-        /// This is the number that identify the start of each packet header.
-        /// </summary>
-        // static public UInt16 MagicNumber { get { return 64206; } }
 
         /// <summary>
         /// Xtf file format version.
         /// This value should be 123 as per Triton documentation.
         /// </summary>
-        public Byte FileFormat { get; set; }
+        public Byte FileFormat { get { return _FileFormat; } }
 
         /// <summary>
         /// Xtf system type.
         /// This value should be 1 as per Triton documentation.
         /// </summary>
-        public Byte SystemType { get; set; }
+        public Byte SystemType { get { return _SystemType; } }
 
         /// <summary>
         /// Name of the program used to create this xtf file.
@@ -45,16 +45,16 @@ namespace stdlibXtf
         public String RecordingProgramName
         {
             get { return _RecordingProgramName; }
-            set
-            {
-                if (String.IsNullOrEmpty(value)) { _RecordingProgramName = " ".PadRight(8); }
-                else
-                {
-                    String tmpVal = value.Replace((char)0, ' ');
-                    if (tmpVal.Length > 8) { _RecordingProgramName = tmpVal.Substring(0, 8); }
-                    else { _RecordingProgramName = tmpVal.PadRight(8); }
-                }
-            }
+            //set
+            //{
+            //    if (String.IsNullOrEmpty(value)) { _RecordingProgramName = " ".PadRight(8); }
+            //    else
+            //    {
+            //        String tmpVal = value.Replace((char)0, ' ');
+            //        if (tmpVal.Length > 8) { _RecordingProgramName = tmpVal.Substring(0, 8); }
+            //        else { _RecordingProgramName = tmpVal.PadRight(8); }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -65,16 +65,16 @@ namespace stdlibXtf
         public String RecordingProgramVersion
         {
             get { return _RecordingProgramVersion; }
-            set
-            {
-                if (String.IsNullOrEmpty(value)) { _RecordingProgramVersion = " ".PadRight(8); }
-                else
-                {
-                    String tmpVal = value.Replace((char)0, ' ');
-                    if (tmpVal.Length > 8) { _RecordingProgramVersion = tmpVal.Substring(0, 8); }
-                    else { _RecordingProgramVersion = tmpVal.PadRight(8); }
-                }
-            }
+            //set
+            //{
+            //    if (String.IsNullOrEmpty(value)) { _RecordingProgramVersion = " ".PadRight(8); }
+            //    else
+            //    {
+            //        String tmpVal = value.Replace((char)0, ' ');
+            //        if (tmpVal.Length > 8) { _RecordingProgramVersion = tmpVal.Substring(0, 8); }
+            //        else { _RecordingProgramVersion = tmpVal.PadRight(8); }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -84,22 +84,22 @@ namespace stdlibXtf
         public String SonarName
         {
             get { return _SonarName; }
-            set
-            {
-                if (String.IsNullOrEmpty(value)) { _SonarName = " ".PadRight(16); }
-                else
-                {
-                    String tmpVal = value.Replace((char)0, ' ');
-                    if (tmpVal.Length > 16) { _SonarName = tmpVal.Substring(0, 16); }
-                    else { _SonarName = tmpVal.PadRight(16); }
-                }
-            }
+            //set
+            //{
+            //    if (String.IsNullOrEmpty(value)) { _SonarName = " ".PadRight(16); }
+            //    else
+            //    {
+            //        String tmpVal = value.Replace((char)0, ' ');
+            //        if (tmpVal.Length > 16) { _SonarName = tmpVal.Substring(0, 16); }
+            //        else { _SonarName = tmpVal.PadRight(16); }
+            //    }
+            //}
         }
 
         /// <summary>
         /// ID of the sonar type used to acquire the data.
         /// </summary>
-        public UInt16 SonarType { get; set; }
+        public UInt16 SonarType { get { return _SonarType; } }
 
         /// <summary>
         /// Notes.
@@ -108,16 +108,16 @@ namespace stdlibXtf
         public String NoteString
         {
             get { return _NoteString; }
-            set
-            {
-                if (String.IsNullOrEmpty(value)) { _NoteString = " ".PadRight(64); }
-                else
-                {
-                    String tmpVal = value.Replace((char)0, ' ');
-                    if (tmpVal.Length > 64) { _NoteString = tmpVal.Substring(0, 64); }
-                    else { _NoteString = tmpVal.PadRight(64); }
-                }
-            }
+            //set
+            //{
+            //    if (String.IsNullOrEmpty(value)) { _NoteString = " ".PadRight(64); }
+            //    else
+            //    {
+            //        String tmpVal = value.Replace((char)0, ' ');
+            //        if (tmpVal.Length > 64) { _NoteString = tmpVal.Substring(0, 64); }
+            //        else { _NoteString = tmpVal.PadRight(64); }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -127,16 +127,16 @@ namespace stdlibXtf
         public String ThisFileName
         {
             get { return _ThisFileName; }
-            set
-            {
-                if (String.IsNullOrEmpty(value)) { _ThisFileName = " ".PadRight(64); }
-                else
-                {
-                    String tmpVal = value.Replace((char)0, ' ');
-                    if (tmpVal.Length > 64) { _ThisFileName = tmpVal.Substring(0, 64); }
-                    else { _ThisFileName = tmpVal.PadRight(64); }
-                }
-            }
+            //set
+            //{
+            //    if (String.IsNullOrEmpty(value)) { _ThisFileName = " ".PadRight(64); }
+            //    else
+            //    {
+            //        String tmpVal = value.Replace((char)0, ' ');
+            //        if (tmpVal.Length > 64) { _ThisFileName = tmpVal.Substring(0, 64); }
+            //        else { _ThisFileName = tmpVal.PadRight(64); }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -145,11 +145,34 @@ namespace stdlibXtf
         /// </summary>
         public CoordinateUnits NavigationCoordinateUnits { get; set; }
 
+        /// <summary>
+        /// Gets the number of sonar channels stored inside this document.
+        /// </summary>
         public UInt16 NumberOfSonarChannels { get; set; }
+
+        /// <summary>
+        /// Gets the number of bathymetry channels stored inside this document.
+        /// </summary>
         public UInt16 NumberOfBathymetryChannels { get; set; }
+
+        /// <summary>
+        /// Gets the number of snippet channels stored inside this document.
+        /// </summary>
         public Byte NumberOfSnippetChannels { get; set; }
+
+        /// <summary>
+        /// Gets the number of forward look sonar array channels stored inside this document.
+        /// </summary>
         public Byte NumberOfForwardLookArrays { get; set; }
+
+        /// <summary>
+        /// Gets the number of echo strength channels stored inside this document.
+        /// </summary>
         public UInt16 NumberOfEchoStrengthChannels { get; set; }
+
+        /// <summary>
+        /// Gets the number of interferometry channels stored inside this document.
+        /// </summary>
         public Byte NumberOfInterferometryChannels { get; set; }
 
         /// <summary>
@@ -213,29 +236,23 @@ namespace stdlibXtf
         /// </summary>
         public Single MRUOffsetRoll { get; set; }
 
-        ///// <summary>
-        ///// Data for each channel.
-        ///// All sidescan channels will always precede the bathymetry channels.
-        ///// </summary>
-        //public List<ChannelInfo> Channels { get { return _Channels; } }
-
-        #endregion
+        #endregion public properties
 
         #region contructors
 
         /// <summary>
-        /// Create an empty xtf file header.
+        /// Initializes a new instance of the XtfMainHeader class that has default zero values.
         /// </summary>
         public XtfMainHeader()
         {
-            FileFormat = 123;
-            SystemType = 1;
-            RecordingProgramName = "nd";
-            RecordingProgramVersion = "223";
-            SonarName = "nd";
-            SonarType = 0;
-            NoteString = "nd";
-            ThisFileName = "nd";
+            _FileFormat = 123;
+            _SystemType = 1;
+            _RecordingProgramName = "nd";
+            _RecordingProgramVersion = "223";
+            _SonarName = "nd";
+            _SonarType = 0;
+            _NoteString = "nd";
+            _ThisFileName = "nd";
             NavigationCoordinateUnits = 0;
             NumberOfSonarChannels = 0;
             NumberOfBathymetryChannels = 0;
@@ -255,24 +272,22 @@ namespace stdlibXtf
             MRUOffsetYaw = 0;
             MRUOffsetPitch = 0;
             MRUOffsetRoll = 0;
-            //_Channels = new List<ChannelInfo> { new ChannelInfo() };
-
         }
 
         /// <summary>
-        /// Create the xtf header from the given bytes.
-        /// 256 byte that contain the main header of the xtf file.
+        /// Initializes a new instance of the XtfMainHeader class that contain the values extracted from the given byte array.
         /// </summary>
+        /// <param name="byteArray">The size of array need to be at least of 256 bytes.</param>
         public XtfMainHeader(Byte[] byteArray)
         {
-            FileFormat = 123;
-            SystemType = 1;
-            RecordingProgramName = "nd";
-            RecordingProgramVersion = "223";
-            SonarName = "nd";
-            SonarType = 0;
-            NoteString = "nd";
-            ThisFileName = "nd";
+            _FileFormat = 123;
+            _SystemType = 1;
+            _RecordingProgramName = "nd";
+            _RecordingProgramVersion = "223";
+            _SonarName = "nd";
+            _SonarType = 0;
+            _NoteString = "nd";
+            _ThisFileName = "nd";
             NavigationCoordinateUnits = 0;
             NumberOfSonarChannels = 0;
             NumberOfBathymetryChannels = 0;
@@ -292,20 +307,19 @@ namespace stdlibXtf
             MRUOffsetYaw = 0;
             MRUOffsetPitch = 0;
             MRUOffsetRoll = 0;
-            //_Channels = new List<ChannelInfo> { new ChannelInfo() };
 
             if (byteArray.Length >= 256)
             {
                 using (BinaryReader dp = new BinaryReader(ArrayToStream.BytesToMemory(byteArray)))
                 {
-                    FileFormat = dp.ReadByte(); // 0
-                    SystemType = dp.ReadByte(); // 1
-                    RecordingProgramName = new String(dp.ReadChars(8)); // 2-3-4-5-6-7-8-9
-                    RecordingProgramVersion = new String(dp.ReadChars(8)); // 10-11-12-13-14-15-16-17
-                    SonarName = new String(dp.ReadChars(16)); // 18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33
-                    SonarType = dp.ReadUInt16(); // 34-35
-                    NoteString = new String(dp.ReadChars(64)); // 36 -> 99
-                    ThisFileName = new String(dp.ReadChars(64)); // 100 -> 163
+                    _FileFormat = dp.ReadByte(); // 0
+                    _SystemType = dp.ReadByte(); // 1
+                    _RecordingProgramName = new String(dp.ReadChars(8)); // 2-3-4-5-6-7-8-9
+                    _RecordingProgramVersion = new String(dp.ReadChars(8)); // 10-11-12-13-14-15-16-17
+                    _SonarName = new String(dp.ReadChars(16)); // 18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33
+                    _SonarType = dp.ReadUInt16(); // 34-35
+                    _NoteString = new String(dp.ReadChars(64)); // 36 -> 99
+                    _ThisFileName = new String(dp.ReadChars(64)); // 100 -> 163
                     NavigationCoordinateUnits = (CoordinateUnits)dp.ReadUInt16(); // 164-165
                     NumberOfSonarChannels = dp.ReadUInt16(); // 166-167
                     NumberOfBathymetryChannels = dp.ReadUInt16(); // 168-169
@@ -331,39 +345,10 @@ namespace stdlibXtf
                     MRUOffsetYaw = dp.ReadSingle(); // 244-245-246-247
                     MRUOffsetPitch = dp.ReadSingle(); // 248-249-250-251
                     MRUOffsetRoll = dp.ReadSingle(); // 252-253-254-255
-
-                    //_Channels.Clear();
-                    //int chnum = NumberOfSonarChannels + NumberOfBathymetryChannels - 1;
-
-                    //if (chnum <= 6)
-                    //{
-                    //    for (int i = 0; i <= chnum; i++)
-                    //    {
-                    //        _Channels.Add(new ChannelInfo(dp.ReadBytes(128)));
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (byteArray.Length >= 2048)
-                    //    {
-                    //        for (int i = 0; i <= chnum; i++)
-                    //        {
-                    //            _Channels.Add(new ChannelInfo(dp.ReadBytes(128)));
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        for (int i = 0; i <= 6; i++)
-                    //        {
-                    //            _Channels.Add(new ChannelInfo(dp.ReadBytes(128)));
-                    //        }
-                    //    }
-                    //}
                 }
             }
 
-            #endregion
-
+            #endregion contructors
         }
     }
 }

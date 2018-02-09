@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.SubPackets.ChannelInfo</title>
 </head>
 
 <body>
@@ -28,79 +28,118 @@
 
     <div class="container">
         <section id="nav_content">
-            <script src="javascripts/navlist.js" language="jscript"></script>
+            <script src="javascripts/navlist-SubPackets.js" language="jscript"></script>
         </section>
     </div>
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>ChannelInfo (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.SubPackets.html">stdlibXtf.SubPackets</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Represent the channel information structure present, one time for each channel, in the document header.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>ChannelInfo()</td>
+                <td>Initializes a new instance of the <span class="pl-e">ChannelInfo</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>ChannelInfo(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">ChannelInfo</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 128 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>TypeOfChannel</td>
+                <td>Gets the kind of channel (Subbottom, Port, Starboard or Bathymetry).</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>SubChannelNumber</td>
+                <td>Gets the index for which this <span class="pl-e">ChannelInfo</span> is.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>CorrectionFlag</td>
+                <td>Gets the way the data are stored.</td>
+            </tr>
+            <tr>
+                <td>Polarity</td>
+                <td>Gets the polarity of the data.</td>
+            </tr>
+            <tr>
+                <td>BytesPerSample</td>
+                <td>Gets the quantity of bytes for each sample stored.</td>
+            </tr>
+            <tr>
+                <td>SamplesPerChannel</td>
+                <td>Gets the number of samples per channel. This value will be overridden by the NumberSamples in
+                    <span class="pl-e"><a href="stdlibXtf.SubPackets.PingChannelHeader.html">PingChannelHeader</a></span> subpacket.</td>
+            </tr>
+            <tr>
+                <td>ChannelName</td>
+                <td>Gets the description of the channel.</td>
+            </tr>
+            <tr>
+                <td>VoltScale</td>
+                <td>Gets how many volts are represented by a maximum sample value in the range -5.0 to +4.9998 volts.</td>
+            </tr>
+            <tr>
+                <td>Frequency</td>
+                <td>Gets the center transmit frequency.</td>
+            </tr>
+            <tr>
+                <td>HorizontalBeamAngle</td>
+                <td>Gets the horizontal beam angle, tipically 1 degree.</td>
+            </tr>
+            <tr>
+                <td>TiltAngle</td>
+                <td>Gets the tilt angle, tipically 30 degrees.</td>
+            </tr>
+            <tr>
+                <td>BeamWidth</td>
+                <td>Gets the 3 dB beam width, tipically 50 degrees.</td>
+            </tr>
+            <tr>
+                <td>OffsetX</td>
+                <td>Gets the offset of MultiBeam system. Orientation of positive X is to starboard.</td>
+            </tr>
+            <tr>
+                <td>OffsetY</td>
+                <td>Gets the offset of MultiBeam system. Orientation of positive Y is forward.</td>
+            </tr>
+            <tr>
+                <td>OffsetZ</td>
+                <td>Gets the offset of MultiBeam system. Orientation of positive Z is down, just like depth.</td>
+            </tr>
+            <tr>
+                <td>OffsetYaw</td>
+                <td>Gets the offset of MultiBeam system. Orientation of positive yaw is turn to right.<br/>
+                    If the multibeam sensor is reverse mounted (facing backwards), then OffsetYaw will be around 180 degrees.</td>
+            </tr>
+            <tr>
+                <td>OffsetPitch</td>
+                <td>Gets the offset of MultiBeam system. Orientation of positive pitch is nose up.</td>
+            </tr>
+            <tr>
+                <td>OffsetRoll</td>
+                <td>Gets the offset of MultiBeam system. Orientation of positive roll is lean to starboard.</td>
+            </tr>
+            <tr>
+                <td>BeamsPerArray</td>
+                <td>Gets the beams for each array. Valid only for forward looking sonar systems.</td>
+            </tr>
+            <tr>
+                <td>Latency</td>
+                <td>Gets the latency in milliseconds.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

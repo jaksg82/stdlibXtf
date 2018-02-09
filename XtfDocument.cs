@@ -3,10 +3,12 @@ using stdlibXtf.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace stdlibXtf
 {
+    /// <summary>
+    /// Represents a document to read XTF files.
+    /// </summary>
     public class XtfDocument
     {
         #region private properties
@@ -14,56 +16,62 @@ namespace stdlibXtf
         private XtfMainHeader _MainHeader;
         private List<ChannelInfo> _Channels;
         private List<IndexEntry> _PacketIndexes;
+        private StatCollection _Stats;
 
         #endregion private properties
 
         #region public properties
 
         /// <summary>
-        /// This is the number that identify the start of each packet header.
+        /// Gets the number that identify the correct start of the packet.
         /// </summary>
         static public UInt16 MagicNumber { get { return 64206; } }
 
         /// <summary>
-        /// Represent the information contained in the file header.
+        /// Gets the XtfMainHeader object that contain the document header information.
         /// </summary>
         public XtfMainHeader MainHeader { get { return _MainHeader; } }
 
         /// <summary>
-        /// Informations, that don't change through the file, relative to each channel recorded.
-        /// All sidescan channels will always precede the bathymetry channels.
+        /// Gets a list of the sonar channels, and the relative informations, contained in this document.
         /// </summary>
         public List<ChannelInfo> Channels { get { return _Channels; } }
 
         /// <summary>
-        /// All the packets recorded in this file.
+        /// Gets a list of all the packets, and their position, stored inside this document.
         /// </summary>
         public List<IndexEntry> Packets { get { return _PacketIndexes; } }  // TODO: Create an entry in order to store the byte position of each packet.
 
         /// <summary>
-        /// A collection with some statistics for each type of packets in this file.
+        /// Gets a summary of the packets type and informations stored inside this document.
         /// </summary>
-        public StatCollection Statistics { get; set; }
+        public StatCollection Statistics { get { return _Stats; } }
 
         #endregion public properties
 
         #region constructor
 
+        /// <summary>
+        /// Initializes a new instance of the XtfDocument class that has default zero values.
+        /// </summary>
         public XtfDocument()
         {
             _MainHeader = new XtfMainHeader();
             _Channels = new List<ChannelInfo> { };
             _PacketIndexes = new List<IndexEntry> { };
-            Statistics = new StatCollection();
+            _Stats = new StatCollection();
         }
 
-
+        /// <summary>
+        /// Initializes a new instance of the XtfDocument class that contain the values extracted from the given byte array.
+        /// </summary>
+        /// <param name="byteArray"></param>
         public XtfDocument(Byte[] byteArray)
         {
             _MainHeader = new XtfMainHeader();
             _Channels = new List<ChannelInfo> { };
             _PacketIndexes = new List<IndexEntry> { };
-            Statistics = new StatCollection();
+            _Stats = new StatCollection();
 
             if (byteArray.Length >= 1024)
             {
@@ -104,7 +112,6 @@ namespace stdlibXtf
                                 }
                             }
                         }
-
                     }
 
                     UInt32 actualByte;
@@ -127,7 +134,7 @@ namespace stdlibXtf
                         if (snif.MagicNumber == MagicNumber)
                         {
                             _PacketIndexes.Add(new IndexEntry(snif.HeaderType, actualByte));
-                            Statistics.AddPacket(snif);
+                            _Stats.AddPacket(snif);
                             // Update the reading position
                             actualByte = actualByte + snif.NumberBytesThisRecord;
                             dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
@@ -141,15 +148,8 @@ namespace stdlibXtf
                     }
                 }
             }
-
         }
 
         #endregion constructor
-
-        #region functions
-
-
-        #endregion functions
-
     }
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf by jaksg82</title>
+    <title>stdlibXtf.SubPackets.PingChannelHeader</title>
 </head>
 
 <body>
@@ -28,79 +28,127 @@
 
     <div class="container">
         <section id="nav_content">
-            <script src="javascripts/navlist.js" language="jscript"></script>
+            <script src="javascripts/navlist-SubPackets.js" language="jscript"></script>
         </section>
     </div>
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>PingChannelHeader (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.SubPackets.html">stdlibXtf.SubPackets</a></p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
+            <p>Represent the channel informations that can be unique from ping to ping.</p>
 
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PingChannelHeader()</td>
+                <td>Initializes a new instance of the <span class="pl-e">PingChannelHeader</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>PingChannelHeader(Byte[])</td>
+                <td>Initializes a new instance of the <span class="pl-e">PingChannelHeader</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of 64 bytes.</td>
             </tr>
             </table>
 
-            <h2>Structs</h2>
+            <h2>Properties</h2>
             <table>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>ChannelNumber</td>
+                <td>Gets the number of the channel. Typically: 0=port low frequency, 1=starboard low frequency, 2=port high frequency and 3=starboard high frequency.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>DownSampleMethod</td>
+                <td>Gets the method used for the downsample. 2=MAX, 4=RMS.</td>
             </tr>
             <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
+                <td>SlantRange</td>
+                <td>Gets the slant range of the data in meters.</td>
+            </tr>
+            <tr>
+                <td>GroundRange</td>
+                <td>Gets the ground range of the data in meters (<span class="pl-e">SlantRange</span><sup>2</sup> - Altitude<sup>2</sup>).</td>
+            </tr>
+            <tr>
+                <td>TimeDelay</td>
+                <td>Gets the amount of time, in seconds, to the start of recorded data.</td>
+            </tr>
+            <tr>
+                <td>TimeDuration</td>
+                <td>Gets the amount of time, in seconds, recorded. Typically <span class="pl-e">SlantRange</span>/750.</td>
+            </tr>
+            <tr>
+                <td>SecondsPerPing</td>
+                <td>Gets the amount of time, in seconds, from ping to ping (<span class="pl-e">SlantRange</span>/750).</td>
+            </tr>
+            <tr>
+                <td>ProcessingFlags</td>
+                <td>Gets the kind of processing used.</td>
+            </tr>
+            <tr>
+                <td>Frequency</td>
+                <td>Gets the center transmit frequency for this channel.</td>
+            </tr>
+            <tr>
+                <td>InitialGainCode</td>
+                <td>Gets the setting as transmitted by sonar.</td>
+            </tr>
+            <tr>
+                <td>GainCode</td>
+                <td>Gets the setting as transmitted by sonar.</td>
+            </tr>
+            <tr>
+                <td>Bandwidth</td>
+                <td>Gets the setting as transmitted by sonar.</td>
+            </tr>
+            <tr>
+                <td>ContactNumber</td>
+                <td>Gets the contact number. Updated when contacts are saved in Target utility.</td>
+            </tr>
+            <tr>
+                <td>ContactClassification</td>
+                <td>Gets the contact classification. Updated when contacts are saved in Target utility.</td>
+            </tr>
+            <tr>
+                <td>ContactSubNumber</td>
+                <td>Gets the contact sub number. Updated when contacts are saved in Target utility.</td>
+            </tr>
+            <tr>
+                <td>ContactType</td>
+                <td>Gets the contact type. Updated when contacts are saved in Target utility.</td>
+            </tr>
+            <tr>
+                <td>NumberSamples</td>
+                <td>Gets the number of samples that will follow this packet. The number of bytes will be this value multiplied by the number of bytes per sample (<span class="pl-e"><a href="stdlibXtf.SubPackets.ChannelInfo.html">ChannelInfo.BytesPerSample</a></span>).</td>
+            </tr>
+            <tr>
+                <td>MillivoltScale</td>
+                <td>Gets the maximum voltage, in milliVolts, represented by a full-scale value in the data.<br/>
+                    If zero, then the value stored in <span class="pl-e"><a href="stdlibXtf.SubPackets.ChannelInfo.html">ChannelInfo.VoltScale</a></span> should be used instead.</td>
+            </tr>
+            <tr>
+                <td>ContactTimeOffTrack</td>
+                <td>Gets the time off track to this contact, stored in milliseconds.</td>
+            </tr>
+            <tr>
+                <td>ContactCloseNumber</td>
+                <td>Gets the number.</td>
+            </tr>
+            <tr>
+                <td>FixedVSOP</td>
+                <td>Gets the fixed along-track size of each ping, in centimeters.<br/>
+                    On multibeam systems this value need to be filled in to prevent Isis from calculating along-track ground coverage based on beam spread and spedd over ground.</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td>Gets the weighting factor passed by some sonars.<br/>
+                    This value is mandatory for Edgetech digital sonars types 24, 35, 38 and Kongsberg SA type 48.</td>
             </tr>
             </table>
 
-            <h2>Interfaces</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
-
-            <h2>Enums</h2>
-            <table>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            <tr>
-                <td><a href="">class</a></td>
-                <td>class description</td>
-            </tr>
-            </table>
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>

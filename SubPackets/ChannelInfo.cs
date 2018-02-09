@@ -67,6 +67,8 @@ namespace stdlibXtf.SubPackets
 
         public UInt16 BeamsPerArray;
 
+        public Single Latency; // valid up to X34 version
+
         #endregion
 
         #region constructors
@@ -92,6 +94,7 @@ namespace stdlibXtf.SubPackets
             OffsetPitch = 0;
             OffsetRoll = 0;
             BeamsPerArray = 0;
+            Latency = 0;
 
         }
 
@@ -116,6 +119,7 @@ namespace stdlibXtf.SubPackets
             OffsetPitch = 0;
             OffsetRoll = 0;
             BeamsPerArray = 0;
+            Latency = 0;
 
             using (BinaryReader dp = new BinaryReader(ArrayToStream.BytesToMemory(byteArray)))
             {
@@ -140,6 +144,7 @@ namespace stdlibXtf.SubPackets
                     OffsetPitch = dp.ReadSingle(); // 64-65-66-67
                     OffsetRoll = dp.ReadSingle(); // 68-69-70-71
                     BeamsPerArray = dp.ReadUInt16(); // 72-73
+                    Latency = dp.ReadSingle(); // 74-75-76-77
 
                 }
             }
