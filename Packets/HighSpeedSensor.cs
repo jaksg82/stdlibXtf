@@ -5,60 +5,106 @@ using stdlibXtf.Common;
 
 namespace stdlibXtf.Packets
 {
-    public class HighSpeedSensor : IPacket 
+    /// <summary>
+    /// Define the high speed sensor data packet.
+    /// </summary>
+    public class HighSpeedSensor : IPacket
     {
-        #region private properties
+        #region IPacket implementation
 
-        private Byte _HeaderType = 15; // XTF_HEADER_HIGHSPEED_SENSOR2
+        private Byte _HeaderType;
         private ushort _MagicNumber;
         private byte _SubChannelNumber;
         private ushort _NumberChannelsToFollow;
         private uint _NumberBytesThisRecord;
         private DateTime _PacketTime;
 
-        #endregion
+        /// <summary>
+        /// Gets the type of the packet header.
+        /// </summary>
+        public Byte HeaderType { get { return _HeaderType; } }
+
+        /// <summary>
+        /// Gets the number that identify the correct start of the packet.
+        /// </summary>
+        public ushort MagicNumber { get { return _MagicNumber; } }
+
+        /// <summary>
+        /// Gets the index number of which channels this packet are referred.
+        /// </summary>
+        public byte SubChannelNumber { get { return _SubChannelNumber; } }
+
+        /// <summary>
+        /// Gets the number of channels that follow this packet.
+        /// </summary>
+        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
+
+        /// <summary>
+        /// Total byte count for this packet, including the header and the data if available.
+        /// </summary>
+        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
+
+        /// <summary>
+        /// Gets the packet recording time.
+        /// </summary>
+        public DateTime PacketTime { get { return _PacketTime; } }
+
+        #endregion IPacket implementation
+
+        #region private properties
+
+        private UInt32 _RelativeBathyPingNumber;
+        private UInt32 _NumberSensorBytes;
+
+        #endregion private properties
 
         #region public properties
 
-        // IPacket implementation
-        public Byte HeaderType { get { return _HeaderType; } }
-        public ushort MagicNumber { get { return _MagicNumber; } }
-        public byte SubChannelNumber { get { return _SubChannelNumber; } }
-        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
-        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
-        public DateTime PacketTime { get { return _PacketTime; } }
+        /// <summary>
+        /// Bathymetry ping number belonging to this sensor data.
+        /// </summary>
+        public UInt32 RelativeBathyPingNumber { get { return _RelativeBathyPingNumber; } }
 
-        // Other properties
-        public UInt32 RelativeBathyPingNumber { get; set; }
-        public UInt32 NumberSensorBytes { get; set; }
+        /// <summary>
+        /// Number of bytes of sensor data following this structure.
+        /// </summary>
+        public UInt32 NumberSensorBytes { get { return _NumberSensorBytes; } }
 
-        #endregion
+        #endregion public properties
 
         #region constructors
 
+        /// <summary>
+        /// Initializes a new instance of the HighSpeedSensor class that has default zero values.
+        /// </summary>
         public HighSpeedSensor()
         {
+            _HeaderType = 15;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 256;
             _PacketTime = DateTime.MinValue;
 
-            NumberSensorBytes = 0;
-            RelativeBathyPingNumber = 0;
-
+            _NumberSensorBytes = 0;
+            _RelativeBathyPingNumber = 0;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the HighSpeedSensor class that contain the values extracted from the given byte array.
+        /// </summary>
+        /// <param name="byteArray">The size of array need to be at least of 64 bytes.</param>
         public HighSpeedSensor(Byte[] byteArray)
         {
+            _HeaderType = 15;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 256;
             _PacketTime = DateTime.MinValue;
 
-            NumberSensorBytes = 0;
-            RelativeBathyPingNumber = 0;
+            _NumberSensorBytes = 0;
+            _RelativeBathyPingNumber = 0;
 
             UInt16 chkNumber;
             UInt16 Year;
@@ -76,9 +122,9 @@ namespace stdlibXtf.Packets
                 if (byteArray.Length >= 31)
                 {
                     chkNumber = dp.ReadUInt16(); // 0-1
-                    if (chkNumber == XtfMainHeader.MagicNumber)
+                    if (chkNumber == XtfDocument.MagicNumber)
                     {
-                        dp.ReadByte(); //HeaderType 2
+                        _HeaderType = dp.ReadByte(); //HeaderType 2
                         _SubChannelNumber = dp.ReadByte(); // 3
                         _NumberChannelsToFollow = dp.ReadUInt16(); // 4-5
                         dp.ReadUInt16(); //Unused 6-7
@@ -105,15 +151,13 @@ namespace stdlibXtf.Packets
                         else
                         { _PacketTime = DateTime.MinValue; }
 
-                        NumberSensorBytes = dp.ReadUInt32(); // 23-24-25-26
-                        RelativeBathyPingNumber = dp.ReadUInt32(); // 27-28-29-30
-
+                        _NumberSensorBytes = dp.ReadUInt32(); // 23-24-25-26
+                        _RelativeBathyPingNumber = dp.ReadUInt32(); // 27-28-29-30
                     }
                 }
             }
         }
 
-        #endregion
-
+        #endregion constructors
     }
 }

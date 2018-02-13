@@ -1,25 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace stdlibXtf.Common
 {
+    /// <summary>
+    /// Define a collection of the known packet header types.
+    /// </summary>
     public class PacketHeaderTypes
     {
         #region private properties
 
         private List<TypeEntry> _KnownTypes;
 
-        #endregion
+        #endregion private properties
 
         #region public properties
 
+        /// <summary>
+        /// Gets the array of TypeEntry objects that represent all the known packets.
+        /// </summary>
         public List<TypeEntry> KnownTypes { get { return _KnownTypes; } }
 
-        #endregion
+        #endregion public properties
 
         #region constructor
 
+        /// <summary>
+        /// Initializes a new instance of the PacketHeaderTypes class that has all the values.
+        /// </summary>
         public PacketHeaderTypes()
         {
             _KnownTypes = new List<TypeEntry>
@@ -80,12 +87,17 @@ namespace stdlibXtf.Common
                 new TypeEntry(199, "XtfHeaderCustom", "Custom Vendor data"),
                 new TypeEntry(200, "XtfHeaderUserDefined", "This packet type is reserved for specific applications.")
             };
-
         }
-        #endregion
 
-        #region functions
+        #endregion constructor
 
+        #region methods
+
+        /// <summary>
+        /// Gets the name associated to the given ID.
+        /// </summary>
+        /// <param name="id">Byte value of the packet type.</param>
+        /// <returns>A string with the name of the packet, if available.</returns>
         public string GetName(byte id)
         {
             string foundname = null;
@@ -98,6 +110,11 @@ namespace stdlibXtf.Common
             return string.IsNullOrWhiteSpace(foundname) ? "Unknown" : foundname;
         }
 
+        /// <summary>
+        /// Gets the description associated to the given ID.
+        /// </summary>
+        /// <param name="id">Byte value of the packet type.</param>
+        /// <returns>A string with the description of the packet, if available.</returns>
         public string GetDescription(byte id)
         {
             string foundname = null;
@@ -110,7 +127,6 @@ namespace stdlibXtf.Common
             return string.IsNullOrWhiteSpace(foundname) ? "Unknown" : foundname;
         }
 
-        #endregion
-
+        #endregion methods
     }
 }

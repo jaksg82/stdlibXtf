@@ -2,6 +2,9 @@
 
 namespace stdlibXtf.Common
 {
+    /// <summary>
+    /// Define a collection of the known sonar models.
+    /// </summary>
     public class SonarModelTypes
     {
         #region private properties
@@ -12,12 +15,18 @@ namespace stdlibXtf.Common
 
         #region public properties
 
+        /// <summary>
+        /// Gets the array of TypeEntry objects that represent all the known packets.
+        /// </summary>
         public List<TypeEntry> KnownTypes { get { return _KnownTypes; } }
 
         #endregion public properties
 
         #region constructor
 
+        /// <summary>
+        /// Initializes a new instance of the SonarModelTypes class that has all the values.
+        /// </summary>
         public SonarModelTypes()
         {
             _KnownTypes = new List<TypeEntry>
@@ -86,8 +95,13 @@ namespace stdlibXtf.Common
 
         #endregion constructor
 
-        #region functions
+        #region methods
 
+        /// <summary>
+        /// Gets the name associated to the given ID.
+        /// </summary>
+        /// <param name="id">Byte value of the sonar type.</param>
+        /// <returns>A string with the name of the sonar, if available.</returns>
         public string GetName(byte id)
         {
             string foundname = null;
@@ -100,6 +114,11 @@ namespace stdlibXtf.Common
             return string.IsNullOrWhiteSpace(foundname) ? "Unknown" : foundname;
         }
 
+        /// <summary>
+        /// Gets the description associated to the given ID.
+        /// </summary>
+        /// <param name="id">Byte value of the sonar type.</param>
+        /// <returns>A string with the description of the sonar, if available.</returns>
         public string GetDescription(byte id)
         {
             string foundname = null;
@@ -112,6 +131,6 @@ namespace stdlibXtf.Common
             return string.IsNullOrWhiteSpace(foundname) ? "Unknown" : foundname;
         }
 
-        #endregion functions
+        #endregion methods
     }
 }

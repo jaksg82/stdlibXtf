@@ -38,7 +38,7 @@
             <p><b>Namespace:</b> <a href="stdlibXtf.Packets.html">stdlibXtf.Packets</a></p>
             <p><b>Implements:</b> <a href="stdlibXtf.Common.IPacket.html">IPacket</a></p>
 
-            <p>Define the base data packet.</p>
+            <p>Define a navigation data packet.</p>
 
             <h2>Constructors</h2>
             <table>
@@ -80,12 +80,12 @@
                 <td>Gets the packet recording time.</td>
             </tr>
             <tr>
+                <td>TimeTag</td>
+                <td>System time reference in milliseconds.</td>
+           </tr>
+           <tr>
                 <td>SourceEpoch</td>
                 <td>Source Epoch Seconds since 1/1/1970, will be followed attitude data even to 64 bytes.</td>
-            </tr>
-            <tr>
-                <td>SourceEpochMicroseconds</td>
-                <td>The Microsecond part of <span class="pl-e">SourceEpoch</span>. Range: 0 to 999999</td>
             </tr>
             <tr>
                 <td>TimestampValidity</td>
@@ -113,7 +113,7 @@
 
             <h2>Remarks</h2>
             <p>remarks ...</p>
-            
+
         </section>
     </div>
 </body>

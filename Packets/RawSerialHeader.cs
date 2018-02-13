@@ -5,63 +5,114 @@ using stdlibXtf.Common;
 
 namespace stdlibXtf.Packets
 {
+    /// <summary>
+    /// Define a raw serial data packet.
+    /// </summary>
     public class RawSerialHeader : IPacket
     {
-        #region private properties
+        #region IPacket implementation
 
-        private Byte _HeaderType = 6; // XTF_HEADER_RAW_SERIAL
+        private Byte _HeaderType;
         private ushort _MagicNumber;
         private byte _SubChannelNumber;
         private ushort _NumberChannelsToFollow;
         private uint _NumberBytesThisRecord;
         private DateTime _PacketTime;
 
-        #endregion
+        /// <summary>
+        /// Gets the type of the packet header.
+        /// </summary>
+        public Byte HeaderType { get { return _HeaderType; } }
+
+        /// <summary>
+        /// Gets the number that identify the correct start of the packet.
+        /// </summary>
+        public ushort MagicNumber { get { return _MagicNumber; } }
+
+        /// <summary>
+        /// Gets the index number of which channels this packet are referred.
+        /// </summary>
+        public byte SubChannelNumber { get { return _SubChannelNumber; } }
+
+        /// <summary>
+        /// Gets the number of channels that follow this packet.
+        /// </summary>
+        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
+
+        /// <summary>
+        /// Total byte count for this packet, including the header and the data if available.
+        /// </summary>
+        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
+
+        /// <summary>
+        /// Gets the packet recording time.
+        /// </summary>
+        public DateTime PacketTime { get { return _PacketTime; } }
+
+        #endregion IPacket implementation
+
+        #region private properties
+
+        private Byte _SerialPort;
+        private String _RawAsciiData;
+        private UInt32 _TimeTag;
+
+        #endregion private properties
 
         #region public properties
 
-        // IPacket implementation
-        public Byte HeaderType { get { return _HeaderType; } }
-        public ushort MagicNumber { get { return _MagicNumber; } }
-        public byte SubChannelNumber { get { return _SubChannelNumber; } }
-        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
-        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
-        public DateTime PacketTime { get { return _PacketTime; } }
+        /// <summary>
+        /// Gets the serial port used to receive this data. Set to 0 when data is received by other means.
+        /// </summary>
+        public Byte SerialPort { get { return _SerialPort; } }
 
-        // Other properties
-        public Byte SerialPort { get; set; }
-        public String RawAsciiData { get; set; }
-        public UInt32 TimeTag { get; set; }
+        /// <summary>
+        /// Gets the ASCII string of the data.
+        /// </summary>
+        public String RawAsciiData { get { return _RawAsciiData; } }
 
-        #endregion
+        /// <summary>
+        /// Get the system time reference in milliseconds.
+        /// </summary>
+        public UInt32 TimeTag { get { return _TimeTag; } }
+
+        #endregion public properties
 
         #region constructors
 
+        /// <summary>
+        /// Initializes a new instance of the RawSerialHeader class that has default zero values.
+        /// </summary>
         public RawSerialHeader()
         {
+            _HeaderType = 6;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 64;
             _PacketTime = DateTime.MinValue;
 
-            SerialPort = 0;
-            RawAsciiData = "";
-            TimeTag = 0;
-
+            _SerialPort = 0;
+            _RawAsciiData = "";
+            _TimeTag = 0;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the RawSerialHeader class that contain the values extracted from the given byte array.
+        /// </summary>
+        /// <param name="byteArray">The size of array need to be at least of 64 bytes.</param>
         public RawSerialHeader(Byte[] byteArray)
         {
+            _HeaderType = 6;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 64;
             _PacketTime = DateTime.MinValue;
 
-            SerialPort = 0;
-            RawAsciiData = "";
-            TimeTag = 0;
+            _SerialPort = 0;
+            _RawAsciiData = "";
+            _TimeTag = 0;
 
             UInt16 chkNumber;
             UInt16 Year;
@@ -80,7 +131,7 @@ namespace stdlibXtf.Packets
                 if (byteArray.Length >= 64)
                 {
                     chkNumber = dp.ReadUInt16(); // 0-1
-                    if (chkNumber == XtfMainHeader.MagicNumber)
+                    if (chkNumber == XtfDocument.MagicNumber)
                     {
                         dp.ReadByte(); //HeaderType 2
                         _SubChannelNumber = dp.ReadByte(); // 3
@@ -111,19 +162,17 @@ namespace stdlibXtf.Packets
                         { _PacketTime = DateTime.MinValue; }
 
                         dp.ReadUInt16(); // 22-23 Julian Day
-                        TimeTag = dp.ReadUInt32(); // 24-25-26-27
+                        _TimeTag = dp.ReadUInt32(); // 24-25-26-27
                         StringSize = dp.ReadUInt16(); // 28-29
                         if (_NumberBytesThisRecord >= (StringSize + 30))
-                        { RawAsciiData = new String(dp.ReadChars(StringSize)); }
+                        { _RawAsciiData = new String(dp.ReadChars(StringSize)); }
                         else
-                        { RawAsciiData = new String(dp.ReadChars(Convert.ToInt32(_NumberBytesThisRecord - 30))); }
-
+                        { _RawAsciiData = new String(dp.ReadChars(Convert.ToInt32(_NumberBytesThisRecord - 30))); }
                     }
                 }
             }
         }
 
-        #endregion
-
+        #endregion constructors
     }
 }

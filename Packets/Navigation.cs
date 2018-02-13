@@ -5,72 +5,141 @@ using stdlibXtf.Common;
 
 namespace stdlibXtf.Packets
 {
-    public class Navigation : IPacket 
+    /// <summary>
+    /// Define a navigation data packet.
+    /// </summary>
+    public class Navigation : IPacket
     {
-        #region private properties
+        #region IPacket implementation
 
-        private Byte _HeaderType = 42; // XTF_HEADER_NAVIGATION
+        private Byte _HeaderType;
         private ushort _MagicNumber;
         private byte _SubChannelNumber;
         private ushort _NumberChannelsToFollow;
         private uint _NumberBytesThisRecord;
         private DateTime _PacketTime;
 
-        #endregion
+        /// <summary>
+        /// Gets the type of the packet header.
+        /// </summary>
+        public Byte HeaderType { get { return _HeaderType; } }
+
+        /// <summary>
+        /// Gets the number that identify the correct start of the packet.
+        /// </summary>
+        public ushort MagicNumber { get { return _MagicNumber; } }
+
+        /// <summary>
+        /// Gets the index number of which channels this packet are referred.
+        /// </summary>
+        public byte SubChannelNumber { get { return _SubChannelNumber; } }
+
+        /// <summary>
+        /// Gets the number of channels that follow this packet.
+        /// </summary>
+        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
+
+        /// <summary>
+        /// Total byte count for this packet, including the header and the data if available.
+        /// </summary>
+        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
+
+        /// <summary>
+        /// Gets the packet recording time.
+        /// </summary>
+        public DateTime PacketTime { get { return _PacketTime; } }
+
+        #endregion IPacket implementation
+
+        #region private properties
+
+        private UInt32 _TimeTag;
+        private UInt32 _SourceEpoch;
+        private Double _RawCoordinateX;
+        private Double _RawCoordinateY;
+        private Double _RawAltitude;
+        private Double _TimestampValidity;
+
+        #endregion private properties
 
         #region public properties
 
-        // IPacket implementation
-        public Byte HeaderType { get { return _HeaderType; } }
-        public ushort MagicNumber { get { return _MagicNumber; } }
-        public byte SubChannelNumber { get { return _SubChannelNumber; } }
-        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
-        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
-        public DateTime PacketTime { get { return _PacketTime; } }
+        /// <summary>
+        /// System time reference in milliseconds.
+        /// </summary>
+        public UInt32 TimeTag { get { return _TimeTag; } }
 
-        // Other properties
-        public UInt32 TimeTag { get; set; }
-        public UInt32 SourceEpoch { get; set; }
-        public Double RawCoordinateX { get; set; }
-        public Double RawCoordinateY { get; set; }
-        public Double RawAltitude { get; set; }
-        public Double TimestampValidity { get; set; }
+        /// <summary>
+        /// Source Epoch Seconds since 1/1/1970, will be followed attitude data even to 64 bytes.
+        /// </summary>
+        public UInt32 SourceEpoch { get { return _SourceEpoch; } }
 
-        #endregion
+        /// <summary>
+        /// Raw position from POSMV or other time stamped navigation source.
+        /// </summary>
+        public Double RawCoordinateX { get { return _RawCoordinateX; } }
+
+        /// <summary>
+        /// Raw position from POSMV or other time stamped navigation source.
+        /// </summary>
+        public Double RawCoordinateY { get { return _RawCoordinateY; } }
+
+        /// <summary>
+        /// Altitude, can hold real-time kinematics altitude.
+        /// </summary>
+        public Double RawAltitude { get { return _RawAltitude; } }
+
+        /// <summary>
+        /// Time stamp validity:
+        /// 0 = only receive time valid
+        /// 1 = only source time valid
+        /// 3 = both valid
+        /// </summary>
+        public Double TimestampValidity { get { return _TimestampValidity; } }
+
+        #endregion public properties
 
         #region constructors
 
+        /// <summary>
+        /// Initializes a new instance of the Navigation class that has default zero values.
+        /// </summary>
         public Navigation()
         {
+            _HeaderType = 42;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 64;
             _PacketTime = DateTime.MinValue;
 
-            TimeTag = 0;
-            SourceEpoch = 0;
-            RawCoordinateX = 0;
-            RawCoordinateY = 0;
-            RawAltitude = 0;
-            TimestampValidity = 0;
-
+            _TimeTag = 0;
+            _SourceEpoch = 0;
+            _RawCoordinateX = 0;
+            _RawCoordinateY = 0;
+            _RawAltitude = 0;
+            _TimestampValidity = 0;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Navigation class that contain the values extracted from the given byte array.
+        /// </summary>
+        /// <param name="byteArray">The size of array need to be at least of 64 bytes.</param>
         public Navigation(Byte[] byteArray)
         {
+            _HeaderType = 42;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
             _NumberBytesThisRecord = 64;
             _PacketTime = DateTime.MinValue;
 
-            TimeTag = 0;
-            SourceEpoch = 0;
-            RawCoordinateX = 0;
-            RawCoordinateY = 0;
-            RawAltitude = 0;
-            TimestampValidity = 0;
+            _TimeTag = 0;
+            _SourceEpoch = 0;
+            _RawCoordinateX = 0;
+            _RawCoordinateY = 0;
+            _RawAltitude = 0;
+            _TimestampValidity = 0;
 
             UInt16 chkNumber;
             UInt16 Year;
@@ -88,7 +157,7 @@ namespace stdlibXtf.Packets
                 if (byteArray.Length >= 58)
                 {
                     chkNumber = dp.ReadUInt16(); // 0-1
-                    if (chkNumber == XtfMainHeader.MagicNumber)
+                    if (chkNumber == XtfDocument.MagicNumber)
                     {
                         dp.ReadByte(); //HeaderType 2
                         _SubChannelNumber = dp.ReadByte(); // 3
@@ -117,19 +186,17 @@ namespace stdlibXtf.Packets
                         else
                         { _PacketTime = DateTime.MinValue; }
 
-                        SourceEpoch = dp.ReadUInt32(); // 25-26-27-28
-                        TimeTag = dp.ReadUInt32(); // 29-30-31-32
-                        RawCoordinateY = dp.ReadDouble(); // 33-34-35-36-37-38-39-40
-                        RawCoordinateX = dp.ReadDouble(); // 41-42-43-44-45-46-47-48
-                        RawAltitude = dp.ReadDouble(); // 49-50-51-52-53-54-55-56
-                        TimestampValidity = dp.ReadByte(); // 57
-
+                        _SourceEpoch = dp.ReadUInt32(); // 25-26-27-28
+                        _TimeTag = dp.ReadUInt32(); // 29-30-31-32
+                        _RawCoordinateY = dp.ReadDouble(); // 33-34-35-36-37-38-39-40
+                        _RawCoordinateX = dp.ReadDouble(); // 41-42-43-44-45-46-47-48
+                        _RawAltitude = dp.ReadDouble(); // 49-50-51-52-53-54-55-56
+                        _TimestampValidity = dp.ReadByte(); // 57
                     }
                 }
             }
         }
 
-        #endregion
-
+        #endregion constructors
     }
 }

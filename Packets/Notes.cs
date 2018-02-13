@@ -5,46 +5,84 @@ using stdlibXtf.Common;
 
 namespace stdlibXtf.Packets
 {
-    public class Notes : IPacket 
+    /// <summary>
+    /// Define an annotation data packet.
+    /// </summary>
+    public class Notes : IPacket
     {
-        #region private properties
+        #region IPacket implementation
 
-        private Byte _HeaderType = 1; // XTF_HEADER_NOTES
+        private Byte _HeaderType;
         private ushort _MagicNumber;
         private byte _SubChannelNumber;
         private ushort _NumberChannelsToFollow;
         private uint _NumberBytesThisRecord;
         private DateTime _PacketTime;
+
+        /// <summary>
+        /// Gets the type of the packet header.
+        /// </summary>
+        public Byte HeaderType { get { return _HeaderType; } }
+
+        /// <summary>
+        /// Gets the number that identify the correct start of the packet.
+        /// </summary>
+        public ushort MagicNumber { get { return _MagicNumber; } }
+
+        /// <summary>
+        /// Gets the index number of which channels this packet are referred.
+        /// </summary>
+        public byte SubChannelNumber { get { return _SubChannelNumber; } }
+
+        /// <summary>
+        /// Gets the number of channels that follow this packet.
+        /// </summary>
+        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
+
+        /// <summary>
+        /// Total byte count for this packet, including the header and the data if available.
+        /// </summary>
+        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
+
+        /// <summary>
+        /// Gets the packet recording time.
+        /// </summary>
+        public DateTime PacketTime { get { return _PacketTime; } }
+
+        #endregion IPacket implementation
+
+        #region private properties
+
         private String _Text;
 
-        #endregion
+        #endregion private properties
 
         #region public properties
 
-        // IPacket implementation
-        public Byte HeaderType { get { return _HeaderType; } }
-        public ushort MagicNumber { get { return _MagicNumber; } }
-        public byte SubChannelNumber { get { return _SubChannelNumber; } }
-        public ushort NumberChannelsToFollow { get { return _NumberChannelsToFollow; } }
-        public uint NumberBytesThisRecord { get { return _NumberBytesThisRecord; } }
-        public DateTime PacketTime { get { return _PacketTime; } }
-
-        // Other properties
+        /// <summary>
+        /// Gets the annotation text.
+        /// The maximum size is of 200 characters.
+        /// </summary>
         public String Text
         {
             get { return _Text; }
-            set {
-                if (String.IsNullOrEmpty(value)) { value = " "; }
-                if (value.Length > 200) { _Text = value.Substring(0, 200); }
-            }
+            //set
+            //{
+            //    if (String.IsNullOrEmpty(value)) { value = " "; }
+            //    if (value.Length > 200) { _Text = value.Substring(0, 200); }
+            //}
         }
 
-        #endregion
+        #endregion public properties
 
         #region constructors
 
+        /// <summary>
+        /// Initializes a new instance of the Notes class that has default zero values.
+        /// </summary>
         public Notes()
         {
+            _HeaderType = 1;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
@@ -52,11 +90,15 @@ namespace stdlibXtf.Packets
             _PacketTime = DateTime.MinValue;
 
             _Text = " ";
-
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Notes class that contain the values extracted from the given byte array.
+        /// </summary>
+        /// <param name="byteArray">The size of array need to be at least of 256 bytes.</param>
         public Notes(Byte[] byteArray)
         {
+            _HeaderType = 1;
             _MagicNumber = 0;
             _SubChannelNumber = 0;
             _NumberChannelsToFollow = 0;
@@ -81,7 +123,7 @@ namespace stdlibXtf.Packets
                 if (byteArray.Length >= 256)
                 {
                     chkNumber = dp.ReadUInt16(); // 0-1
-                    if (chkNumber == XtfMainHeader.MagicNumber)
+                    if (chkNumber == XtfDocument.MagicNumber)
                     {
                         dp.ReadByte(); //HeaderType 2
                         _SubChannelNumber = dp.ReadByte(); // 3
@@ -112,14 +154,11 @@ namespace stdlibXtf.Packets
 
                         dp.ReadBytes(35); // Unused 21 to 55
                         _Text = new String(dp.ReadChars(200)); // 56 to 255
-
                     }
                 }
             }
         }
 
-        #endregion
-
-
+        #endregion constructors
     }
 }

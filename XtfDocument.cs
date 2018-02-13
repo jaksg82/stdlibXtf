@@ -40,7 +40,7 @@ namespace stdlibXtf
         /// <summary>
         /// Gets a list of all the packets, and their position, stored inside this document.
         /// </summary>
-        public List<IndexEntry> Packets { get { return _PacketIndexes; } }  // TODO: Create an entry in order to store the byte position of each packet.
+        public List<IndexEntry> Packets { get { return _PacketIndexes; } }
 
         /// <summary>
         /// Gets a summary of the packets type and informations stored inside this document.
