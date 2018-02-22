@@ -128,22 +128,66 @@ namespace stdlibXtf
                     dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
 
                     // read all the data packets
-                    while ((totalBytes - actualByte) < 257)
+                    bool IsEndOfStream = false;
+                    long bytesToEnd;
+
+                    while (!IsEndOfStream)
                     {
-                        PacketSniffer snif = new PacketSniffer(dp.ReadBytes(256));
-                        if (snif.MagicNumber == MagicNumber)
+                        try
                         {
-                            _PacketIndexes.Add(new IndexEntry(snif.HeaderType, actualByte));
-                            _Stats.AddPacket(snif);
-                            // Update the reading position
-                            actualByte = actualByte + snif.NumberBytesThisRecord;
-                            dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
+                            // Explicit cast to fix the difference operator with uint values
+                            bytesToEnd = (long)totalBytes - (long)actualByte;
+
+                            if (bytesToEnd > 256)
+                            {
+                                PacketSniffer snif = new PacketSniffer(dp.ReadBytes(256));
+                                if (snif.MagicNumber == MagicNumber)
+                                {
+                                    _PacketIndexes.Add(new IndexEntry(snif.HeaderType, actualByte));
+                                    _Stats.AddPacket(snif);
+                                    // Update the reading position
+                                    actualByte = actualByte + snif.NumberBytesThisRecord;
+                                    dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
+                                }
+                                else
+                                {
+                                    // Update the reading position
+                                    actualByte = actualByte + 1;
+                                    dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
+                                }
+
+                                IsEndOfStream = false;
+                            }
+                            else
+                            {
+                                if (bytesToEnd >= 64)
+                                {
+                                    PacketSniffer snif = new PacketSniffer(dp.ReadBytes(14));
+                                    if (snif.MagicNumber == MagicNumber)
+                                    {
+                                        _PacketIndexes.Add(new IndexEntry(snif.HeaderType, actualByte));
+                                        _Stats.AddPacket(snif);
+                                        // Update the reading position
+                                        actualByte = actualByte + snif.NumberBytesThisRecord;
+                                        dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
+                                    }
+                                    else
+                                    {
+                                        // Update the reading position
+                                        actualByte = actualByte + 1;
+                                        dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
+                                    }
+                                    IsEndOfStream = true;
+                                }
+                                else
+                                {
+                                    IsEndOfStream = true;
+                                }
+                            }
                         }
-                        else
+                        catch
                         {
-                            // Update the reading position
-                            actualByte = actualByte + 1;
-                            dp.BaseStream.Seek(actualByte - 1, SeekOrigin.Begin);
+                            // Error
                         }
                     }
                 }
