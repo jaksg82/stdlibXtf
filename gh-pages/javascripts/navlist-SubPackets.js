@@ -11,6 +11,7 @@ navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.BathySnippet0.html"><img 
 navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.BathySnippet1.html"><img src="images/icon_class.png" alt="c" />BathySnippet1</a></h3>';
 navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.BeamXYZA.html"><img src="images/icon_class.png" alt="c" />BeamXYZA</a></h3>';
 navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.ChannelInfo.html"><img src="images/icon_class.png" alt="c" />ChannelInfo</a></h3>';
+navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.PingChannelData.html"><img src="images/icon_class.png" alt="c" />PingChannelData</a></h3>';
 navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.PingChannelHeader.html"><img src="images/icon_class.png" alt="c" />PingChannelHeader</a></h3>';
 navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.QpsMbeEntry.html"><img src="images/icon_class.png" alt="c" />QpsMbeEntry</a></h3>';
 navlist = navlist + '<h3><a href="stdlibXtf.SubPackets.QpsMultiTxEntry.html"><img src="images/icon_class.png" alt="c" />QpsMultiTxEntry</a></h3>';

@@ -6,7 +6,7 @@ using stdlibXtf.Common;
 namespace stdlibXtf.Packets
 {
     /// <summary>
-    /// Define a sonar ping data packet.
+    /// Define a sonar ping header packet.
     /// </summary>
     public class PingHeader : IPacket
     {
@@ -554,7 +554,7 @@ namespace stdlibXtf.Packets
                     chkNumber = dp.ReadUInt16(); // 0-1
                     if (chkNumber == XtfDocument.MagicNumber)
                     {
-                        dp.ReadByte(); //HeaderType 2
+                        _HeaderType = dp.ReadByte(); // 2
                         _SubChannelNumber = dp.ReadByte(); // 3
                         _NumberChannelsToFollow = dp.ReadUInt16(); // 4-5
                         dp.ReadUInt16(); //Unused 6-7

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>stdlibXtf</title>
+    <title>stdlibXtf.SubPackets.PingChannelData</title>
 </head>
 
 <body>
@@ -28,41 +28,48 @@
 
     <div class="container">
         <section id="nav_content">
-            <script src="javascripts/navlist-Base.js" language="jscript"></script>
+            <script src="javascripts/navlist-SubPackets.js" language="jscript"></script>
         </section>
     </div>
 
     <div class="container">
         <section id="main_content">
-            <h1>stdlibXtf (Namespace)</h1>
+            <h1>PingChannelData (Class)</h1>
+            <p><b>Namespace:</b> <a href="stdlibXtf.SubPackets.html">stdlibXtf.SubPackets</a></p>
 
-            <p><b>Namespace:</b> <a href="stdlibXtf.html">stdlibXtf</a></p>
+            <p>Represent the channel data.</p>
 
-            <p>A dotNET Standard library that read the files created by some geophisics acquisition softwares.</p>
-
-            <h2>Classes</h2>
+            <h2>Constructors</h2>
             <table>
             <tr>
-                <td><a href="stdlibXtf.ArrayToStream.html">ArrayToStream</a></td>
-                <td>Contains methods to convert byte arrays to MemoryStream objects.</td>
+                <td>PingChannelData()</td>
+                <td>Initializes a new instance of the <span class="pl-e">PingChannelData</span> class that has default zero values.</td>
             </tr>
             <tr>
-                <td><a href="stdlibXtf.PacketSniffer.html">PacketSniffer</a></td>
-                <td>Extract the packet basic information from the given array of bytes.</td>
-            </tr>
-            <tr>
-                <td><a href="stdlibXtf.PingRecord.html">PingRecord</a></td>
-                <td>Define a sonar ping header and data record.</td>
-            </tr>
-            <tr>
-                <td><a href="stdlibXtf.XtfMainHeader.html">XtfMainHeader</a></td>
-                <td>An object that represent the header of the XTF document.</td>
-            </tr>
-            <tr>
-                <td><a href="stdlibXtf.XtfDocument.html">XtfDocument</a></td>
-                <td>Represents a document to read XTF files.</td>
+                <td>PingChannelData(Byte[], UInt32, UInt16, Bool)</td>
+                <td>Initializes a new instance of the <span class="pl-e">PingChannelData</span> class that contain the values extracted from the given byte array.<br/>
+                    The size of array need to be at least of NumberOfSamples multiplied by BytesPerSample.</td>
             </tr>
             </table>
+
+            <h2>Properties</h2>
+            <table>
+            <tr>
+                <td>Count</td>
+                <td>Get the number of samples.</td>
+            </tr>
+            </table>
+
+            <h2>Methods</h2>
+            <table>
+            <tr>
+                <td>GetData()</td>
+                <td>Gets an array of byte values that represent the channel data.</td>
+            </tr>
+            </table>
+
+            <h2>Examples</h2>
+            <p>example ...</p>
 
             <h2>Remarks</h2>
             <p>remarks ...</p>
